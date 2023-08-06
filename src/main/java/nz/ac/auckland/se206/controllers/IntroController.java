@@ -16,11 +16,7 @@ public class IntroController {
     public void initialize() {
         // Initialization code goes here
         // TextToSpeech textToSpeech = new TextToSpeech();
-        // textToSpeech.speak("Worker: Hello welcome to SE206 perfume shop. Please look around and let me know if you need any help. 
-        //Jay: Hmmm, I am looking for the perfume for myself. Could you please recommend the scent to me? 
-        //Worker: No worries, this perfume was just recently released. Would you like to try it?
-        //Jay: Sure!!   ….. What is this smell…. 
-        //When I opened my eyes, I was locked in the storage room and needed to escape as soon as possible, and I don't have enough time !!! 
+        // textToSpeech.speak("Worker: Hello welcome to SE206 perfume shop. Please look around and let me know if you need any help.);
     }
 
     @FXML
