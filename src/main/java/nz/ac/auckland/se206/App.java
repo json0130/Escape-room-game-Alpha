@@ -48,6 +48,7 @@ public class App extends Application {
    */
   @Override
   public void start(final Stage stage) throws IOException {
+    SceneManager.addScene(AppUi.INTRO, loadFxml("intro"));
     SceneManager.addScene(AppUi.CHAT, loadFxml("chat"));
     SceneManager.addScene(AppUi.LOCK, loadFxml("lock"));
     SceneManager.addScene(AppUi.ROOM, loadFxml("room"));
@@ -56,7 +57,7 @@ public class App extends Application {
     // stage.setScene(scene);
     // stage.show();
     // root.requestFocus();
-    scene = new Scene(SceneManager.getScene(AppUi.ROOM), 640, 480);
+    scene = new Scene(SceneManager.getScene(AppUi.INTRO), 640, 480);
     stage.setScene(scene);
     stage.show();
   }
