@@ -3,6 +3,7 @@ package nz.ac.auckland.se206.controllers;
 import java.io.IOException;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.shape.Rectangle;
@@ -14,11 +15,15 @@ public class RoomController {
 
   @FXML private Rectangle door;
   @FXML private Rectangle window;
-  @FXML private Rectangle vase;
+  @FXML private Rectangle perfume;
+  @FXML private Rectangle doorLock;
+  @FXML private ImageView letter;
 
+  private int counter = 0;
   /** Initializes the room view, it is called when the room loads. */
   public void initialize() {
     // Initialization code goes here
+    //letter.setVisible(false);
   }
 
   /**
@@ -86,8 +91,16 @@ public class RoomController {
    * @param event the mouse event
    */
   @FXML
-  public void clickVase(MouseEvent event) {
-    System.out.println("vase clicked");
+  public void clickPerfume(MouseEvent event) {
+    System.out.println("Perfume clicked");
+    counter++;
+    System.out.println("counter: " + counter);
+    if(counter == 5){
+      GameState.isPerfumeColledted = true;
+      letter.setVisible(true);
+      showDialog("Info", "Perfume Collected", "You collected all of the Perfume!");
+    }
+
     if (GameState.isRiddleResolved && !GameState.isKeyFound) {
       showDialog("Info", "Key Found", "You found a key under the vase!");
       GameState.isKeyFound = true;
@@ -98,9 +111,17 @@ public class RoomController {
    * Handles the click event on the window.
    *
    * @param event the mouse event
+   * @throws IOException
    */
   @FXML
-  public void clickWindow(MouseEvent event) {
-    System.out.println("window clicked");
+  public void clickdoor(MouseEvent event) throws IOException {
+    System.out.println("doorLock is clicked");
+    App.setRoot("lock");
+  }
+
+  @FXML
+  public void clickletter(MouseEvent event) throws IOException {
+    System.out.println("letter is clicked");
+    App.setRoot("chat");
   }
 }
