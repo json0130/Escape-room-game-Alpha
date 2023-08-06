@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import nz.ac.auckland.se206.App;
+import nz.ac.auckland.se206.SceneManager.AppUi;
 
 public class LockController {
 
@@ -20,7 +21,8 @@ public class LockController {
     @FXML
     public void switchToRoom() throws IOException {
         System.out.println("Switching to room");
-        App.setRoot("room");
+        //App.setRoot("room");
+        App.setScene(AppUi.ROOM);
     }
 
     @FXML
