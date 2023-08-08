@@ -11,4 +11,7 @@ public class GameState {
 
   public static boolean isPerfumeColledted = false;
 
+  public static boolean isLetterFound = false;
+
+  public static String playerName = ""; // Store the user's name here
 }

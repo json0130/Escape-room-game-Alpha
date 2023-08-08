@@ -24,7 +24,7 @@ public class App extends Application {
     scene.setRoot(loadFxml(fxml));
   }
 
-  public static void setScene(AppUi fxml){
+  public static void setScene(AppUi fxml) {
     scene.setRoot(SceneManager.getScene(fxml));
   }
 
