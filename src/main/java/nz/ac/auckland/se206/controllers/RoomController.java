@@ -1,6 +1,7 @@
 package nz.ac.auckland.se206.controllers;
 
 import java.io.IOException;
+import java.util.Optional;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.application.Platform;
@@ -11,14 +12,18 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
+import javafx.scene.control.TextField;
+import javafx.scene.control.TextInputDialog;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.GridPane;
 import javafx.scene.shape.Rectangle;
 import javafx.util.Duration;
 import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.GameState;
 import nz.ac.auckland.se206.SceneManager.AppUi;
+import nz.ac.auckland.se206.gpt.GptPromptEngineering;
 import nz.ac.auckland.se206.speech.TextToSpeech;
 
 /** Controller class for the room view. */
@@ -33,23 +38,48 @@ public class RoomController {
   @FXML private ProgressBar progressBar;
   @FXML private Label playerNameLabel;
   @FXML private Button hintButton;
+  @FXML private ImageView perfumeImage;
 
   private int counter = 0;
   private int seconds = 100;
   private Timeline timeline;
   private double progressSize = 0.0;
   private boolean firstClickOccurred = false;
+  private boolean firstClickOccurred1 = false;
 
   /** Initializes the room view, it is called when the room loads. */
   public void initialize() {
+    TextInputDialog dialog = new TextInputDialog();
+    dialog.setTitle("Welcome!");
+    dialog.setHeaderText("Welcome to the SE206 perfume shop. Please enter your name:");
 
-    setPlayerNameLabel();
-    // playerNameLabel.setText("Welcome, " + GameState.playerName + "!");
-    if (GameState.isGameStarted) {
-      timeline = new Timeline(new KeyFrame(Duration.seconds(1), this::updateTimer));
-      timeline.setCycleCount(Timeline.INDEFINITE);
-      timeline.play();
-    }
+    GridPane grid = new GridPane();
+    grid.setHgap(10);
+    grid.setVgap(10);
+
+    TextField textField = new TextField();
+    textField.setPromptText("Enter your name");
+    grid.add(textField, 0, 0);
+
+    Label contentText =
+        new Label(
+            "When I opened my eyes, I was locked in the storage room and needed to escape as soon"
+                + "\n as possible, and I don't have enough time !!!");
+    grid.add(contentText, 0, 1);
+
+    dialog.getDialogPane().setContent(grid);
+    Optional<String> result = dialog.showAndWait();
+
+    result.ifPresent(
+        name -> {
+          GameState.playerName =
+              name; // Store the user's name in GameState (you need to define the GameState class)
+          playerNameLabel.setText("Welcome, " + name);
+        });
+
+    timeline = new Timeline(new KeyFrame(Duration.seconds(1), this::updateTimer));
+    timeline.setCycleCount(Timeline.INDEFINITE);
+    timeline.play();
   }
 
   private void setPlayerNameLabel() {
@@ -58,7 +88,7 @@ public class RoomController {
           @Override
           protected Void call() {
             String playerName = GameState.playerName;
-            Platform.runLater(() -> playerNameLabel.setText("Welcome, " + playerName + "!"));
+            Platform.runLater(() -> playerNameLabel.setText("Welcome, " + playerName));
             return null;
           }
         };
@@ -121,14 +151,23 @@ public class RoomController {
   @FXML
   public void clickPerfume(MouseEvent event) {
     perfumeClicked();
-    toggleVisibility();
+    // toggleVisibility();
     if (counter == 5) {
       counter = 5;
-      toggleVisibility1();
+      // toggleVisibility1();
       GameState.isPerfumeColledted = true;
-      GameState.isLetterFound = true;
       letter.setVisible(true);
       showDialog("Info", "Perfume Collected", "You collected all of the Perfume!");
+      // Debug print statements
+      System.out.println("Counter reached 5. Making perfumeImage invisible.");
+      System.out.println("perfumeImage.isVisible(): " + perfumeImage.isVisible());
+
+      // Make the perfumeImage ImageView disappear
+      perfumeImage.setVisible(false);
+
+      // Debug print statement
+      System.out.println(
+          "perfumeImage.isVisible() after setting to false: " + perfumeImage.isVisible());
     }
 
     // if (GameState.isRiddleResolved && !GameState.isKeyFound) {
@@ -144,14 +183,6 @@ public class RoomController {
     System.out.println("counter: " + counter);
   }
 
-  private void toggleVisibility() {
-    perfume.setVisible(!perfume.isVisible());
-  }
-
-  private void toggleVisibility1() {
-    progressBar.setVisible(!progressBar.isVisible());
-  }
-
   /**
    * Handles the click event on the window.
    *
@@ -164,12 +195,14 @@ public class RoomController {
       showDialog("Info", "Door Locked", "You need to collect all of the Perfume!");
     } else {
       System.out.println("door is clicked");
+      GameState.isDoorUnlocked = true;
       App.setScene(AppUi.LOCK);
     }
   }
 
   @FXML
   public void clickletter(MouseEvent event) throws IOException {
+    GameState.isLetterFound = true;
     Task<Void> task =
         new Task<>() {
           @Override
@@ -180,23 +213,21 @@ public class RoomController {
                   App.setScene(AppUi.CHAT);
                 });
 
-            // Run GPT and text-to-speech concurrently in the chat scene
-            // This code will execute after changing to the chat scene
-            // Assuming you have a TextToSpeech class or utility
-            TextToSpeech textToSpeech = new TextToSpeech();
-
-            // Assuming you have a response from GPT
-            String gptResponse = "The first sentence of the response from GPT.";
+            // Run GPT and get the response
+            String gptResponse =
+                GptPromptEngineering.getRiddleWithGivenWord(
+                    "rose"); // Call a method to run GPT and get the response
 
             // Find the first sentence in the response
             int periodIndex = gptResponse.indexOf('.');
             if (periodIndex != -1) {
               String firstSentence = gptResponse.substring(0, periodIndex + 1);
 
-              // Check if this is the first click
+              // Text-to-speech the first sentence only if it hasn't been spoken before
               if (!firstClickOccurred) {
+                TextToSpeech textToSpeech = new TextToSpeech();
                 textToSpeech.speak(firstSentence);
-                firstClickOccurred = true; // Set the flag to true after the first click
+                firstClickOccurred = true;
               }
             }
             return null;
@@ -208,8 +239,8 @@ public class RoomController {
     thread.start();
   }
 
+  @FXML
   public void clickHintButton(ActionEvent event) throws IOException {
-    GameState.isHintClicked = true;
     Task<Void> task =
         new Task<>() {
           @Override
@@ -219,23 +250,25 @@ public class RoomController {
                 () -> {
                   App.setScene(AppUi.HINT);
                 });
+            // Run GPT and get the response
 
-            // Run GPT and text-to-speech concurrently in the chat scene
-            // This code will execute after changing to the chat scene
-            // Assuming you have a TextToSpeech class or utility
-            TextToSpeech textToSpeech = new TextToSpeech();
-
-            // Assuming you have a response from GPT
-            String gptResponse = "The first sentence of the response from GPT.";
+            String gptResponse =
+                GptPromptEngineering
+                    .getHintWithGivenWord(); // Call a method to run GPT and get the response
 
             // Find the first sentence in the response
-            // int periodIndex = gptResponse.indexOf('.');
-            // if (periodIndex != -1) {
-            //   String firstSentence = gptResponse.substring(0, periodIndex + 1);
-            //   textToSpeech.speak(firstSentence);
-            //   // Check if this is the first click
+            int periodIndex = gptResponse.indexOf('.');
+            if (periodIndex != -1) {
+              String firstSentence = gptResponse.substring(0, periodIndex + 1);
 
-            // }
+              // Text-to-speech the first sentence only if it hasn't been spoken before
+              if (!firstClickOccurred1) {
+                TextToSpeech textToSpeech = new TextToSpeech();
+                textToSpeech.speak(firstSentence);
+                firstClickOccurred1 = true;
+              }
+            }
+
             return null;
           }
         };

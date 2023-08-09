@@ -18,6 +18,6 @@
       <Label layoutX="31.0" layoutY="126.0" prefHeight="17.0" prefWidth="569.0" text="Jay: Hmmm, I am looking for the perfume for myself. Could you please recommend the scent to me?" />
       <Label layoutX="31.0" layoutY="163.0" prefHeight="17.0" prefWidth="569.0" text="Worker: No worries, this perfume was just recently released. Would you like to try it?" />
       <Label layoutX="31.0" layoutY="200.0" prefHeight="17.0" prefWidth="569.0" text="Jay: Sure!!   ….. What is this smell…. " />
-      <Label layoutX="25.0" layoutY="249.0" prefHeight="66.0" prefWidth="614.0" text="When I opened my eyes, I was locked in the storage room and needed to escape as soon as possible, &#10;and I don't have enough time !!! " />
+      <Label layoutX="25.0" layoutY="251.0" prefHeight="66.0" prefWidth="614.0" text="When I opened my eyes, I was locked in the storage room and needed to escape as soon as possible, &#10;and I don't have enough time !!! " />
    </children>
 </Pane>

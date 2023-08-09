@@ -9,48 +9,89 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<Pane fx:id="room" focusTraversable="true" onKeyPressed="#onKeyPressed" onKeyReleased="#onKeyReleased" prefHeight="434.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.RoomController">
+<Pane fx:id="room" focusTraversable="true" onKeyPressed="#onKeyPressed" onKeyReleased="#onKeyReleased" prefHeight="473.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.RoomController">
    <children>
       <ImageView fitHeight="434.0" fitWidth="600.0" layoutX="2.0" layoutY="37.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/Firefly%20Luxurious%20perfume%20shop%20storage%20room%20for%20an%20escape%20room.%20The%20closed%20door%20with%20the%20lock%20in%20the%20(8).jpg" />
          </image>
       </ImageView>
-      <ImageView fitHeight="34.0" fitWidth="31.0" layoutX="304.0" layoutY="225.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="306.0" layoutY="219.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/images.jpeg" />
          </image>
       </ImageView>
-      <Label prefHeight="41.0" prefWidth="431.0" text="SOFTENG 206 - ESCAPE ROOM" textFill="#4e4e4e">
+      <ImageView fx:id="perfumeImage" fitHeight="68.0" fitWidth="31.0" layoutX="162.0" layoutY="102.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/images%20(1).jpeg" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="perfumeImage" fitHeight="56.0" fitWidth="56.0" layoutX="144.0" layoutY="274.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/다운로드%20(2).jpeg" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="perfumeImage" fitHeight="57.0" fitWidth="56.0" layoutX="116.0" layoutY="190.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/2585910.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="perfumeImage" fitHeight="48.0" fitWidth="56.0" layoutX="464.0" layoutY="201.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/다운로드%20(3).jpeg" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="perfumeImage" fitHeight="41.0" fitWidth="40.0" layoutX="422.0" layoutY="350.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/images%20(2).jpeg" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="perfumeImage" fitHeight="56.0" fitWidth="31.0" layoutX="456.0" layoutY="80.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/images%20(1).jpeg" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="perfumeImage" fitHeight="60.0" fitWidth="60.0" layoutX="5.0" layoutY="198.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/pngtree-perfume-orange-translucent-png-image_3326852.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="perfumeImage" fitHeight="56.0" fitWidth="56.0" layoutX="473.0" layoutY="302.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/pngtree-perfume-pink-volatility-png-image_3326849.jpg" />
+         </image>
+      </ImageView>
+      <Label layoutX="7.0" layoutY="1.0" prefHeight="41.0" prefWidth="431.0" text="ESCAPE ROOM SE206" textFill="#4e4e4e">
          <font>
             <Font name="Arial" size="28.0" />
          </font>
       </Label>
-      <Rectangle fx:id="perfume" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff" focusTraversable="true" height="34.0" layoutX="145.0" layoutY="262.0" onMouseClicked="#clickPerfume" stroke="BLACK" strokeType="INSIDE" width="31.0" />
-      <Rectangle fx:id="doorlock" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff" focusTraversable="true" height="29.0" layoutX="304.0" layoutY="225.0" onMouseClicked="#clickdoor" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="31.0" />
-      <Rectangle fx:id="perfume" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff" focusTraversable="true" height="60.0" layoutX="114.0" layoutY="149.0" onMouseClicked="#clickPerfume" stroke="BLACK" strokeType="INSIDE" width="31.0" />
-      <Rectangle fx:id="perfume" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff" focusTraversable="true" height="34.0" layoutX="454.0" layoutY="200.0" onMouseClicked="#clickPerfume" stroke="BLACK" strokeType="INSIDE" width="31.0" />
-      <Rectangle fx:id="perfume" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff" focusTraversable="true" height="34.0" layoutX="469.0" layoutY="262.0" onMouseClicked="#clickPerfume" stroke="BLACK" strokeType="INSIDE" width="31.0" />
-      <Rectangle fx:id="perfume" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff" focusTraversable="true" height="60.0" layoutX="15.0" layoutY="149.0" onMouseClicked="#clickPerfume" stroke="BLACK" strokeType="INSIDE" width="31.0" />
-      <Rectangle fx:id="perfume" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff" focusTraversable="true" height="41.0" layoutX="169.0" layoutY="84.0" onMouseClicked="#clickPerfume" stroke="BLACK" strokeType="INSIDE" width="16.0" />
+      <Rectangle fx:id="perfume" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff" focusTraversable="true" height="48.0" layoutX="146.0" layoutY="282.0" onMouseClicked="#clickPerfume" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="40.0" />
+      <Rectangle fx:id="perfume2" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff" focusTraversable="true" height="41.0" layoutX="454.0" layoutY="90.0" onMouseClicked="#clickPerfume" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="31.0" />
+      <Rectangle fx:id="doorlock" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff" focusTraversable="true" height="60.0" layoutX="306.0" layoutY="217.0" onMouseClicked="#clickdoor" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="60.0" />
+      <Rectangle fx:id="perfume" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff" focusTraversable="true" height="48.0" layoutX="114.0" layoutY="199.0" onMouseClicked="#clickPerfume" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="60.0" />
+      <Rectangle fx:id="perfume" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff" focusTraversable="true" height="56.0" layoutX="473.0" layoutY="198.0" onMouseClicked="#clickPerfume" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="31.0" />
+      <Rectangle fx:id="perfume" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff" focusTraversable="true" height="48.0" layoutX="486.0" layoutY="306.0" onMouseClicked="#clickPerfume" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="31.0" />
+      <Rectangle fx:id="perfume" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff" focusTraversable="true" height="56.0" layoutX="20.0" layoutY="199.0" onMouseClicked="#clickPerfume" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="31.0" />
+      <Rectangle fx:id="perfume" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff" focusTraversable="true" height="56.0" layoutX="162.0" layoutY="103.0" onMouseClicked="#clickPerfume" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="31.0" />
       <ImageView fx:id="letter" fitHeight="60.0" fitWidth="70.0" layoutX="222.0" layoutY="360.0" pickOnBounds="true" preserveRatio="true" visible="false">
          <image>
             <Image url="@../images/다운로드.jpeg" />
          </image>
       </ImageView>
       <Rectangle fx:id="letterclicked" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff" focusTraversable="true" height="60.0" layoutX="222.0" layoutY="360.0" onMouseClicked="#clickletter" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="60.0" />
-      <Label fx:id="timerLabel" layoutX="442.0" layoutY="41.0" prefHeight="21.0" prefWidth="145.0" text="Timer : 0:00 seconds" textFill="WHITE">
+      <Label fx:id="timerLabel" layoutX="455.0" layoutY="41.0" prefHeight="21.0" prefWidth="145.0" text="Timer : 100 seconds" textFill="WHITE">
          <font>
             <Font size="15.0" />
          </font>
       </Label>
-      <Label fx:id="label" disable="true" layoutX="242.0" layoutY="196.0" prefHeight="88.0" prefWidth="124.0" text="Alert" />
       <ProgressBar fx:id="progressBar" layoutX="14.0" layoutY="42.0" opacity="0.84" prefHeight="18.0" prefWidth="274.0" progress="0.0" />
-      <Label fx:id="playerNameLabel" layoutX="442.0" layoutY="11.0" prefHeight="20.0" prefWidth="157.0" text="Label">
+      <Label fx:id="playerNameLabel" layoutX="381.0" layoutY="11.0" prefHeight="20.0" prefWidth="218.0" text="Label">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <Button fx:id="hintButton" layoutX="535.0" layoutY="395.0" mnemonicParsing="false" onAction="#clickHintButton" text="Hint" />
+      <Button fx:id="hintButton" layoutX="527.0" layoutY="434.0" mnemonicParsing="false" onAction="#clickHintButton" prefHeight="25.0" prefWidth="60.0" text="Hint" />
+      <Rectangle fx:id="perfume1" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff" focusTraversable="true" height="31.0" layoutX="423.0" layoutY="358.0" onMouseClicked="#clickPerfume" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="31.0" />
    </children>
 </Pane>
