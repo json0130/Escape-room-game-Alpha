@@ -8,6 +8,7 @@ import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.image.ImageView;
@@ -31,9 +32,10 @@ public class RoomController {
   @FXML private Label label;
   @FXML private ProgressBar progressBar;
   @FXML private Label playerNameLabel;
+  @FXML private Button hintButton;
 
   private int counter = 0;
-  private int seconds = 0;
+  private int seconds = 100;
   private Timeline timeline;
   private double progressSize = 0.0;
   private boolean firstClickOccurred = false;
@@ -43,19 +45,11 @@ public class RoomController {
 
     setPlayerNameLabel();
     // playerNameLabel.setText("Welcome, " + GameState.playerName + "!");
-    timeline = new Timeline(new KeyFrame(Duration.seconds(1), this::updateTimer));
-    timeline.setCycleCount(Timeline.INDEFINITE);
-    timeline.play();
-    // timeline = new Timeline(
-    //     new KeyFrame(Duration.seconds(2), event -> {
-    //         label.setVisible(false);
-    //         label.setText(""); // Optional: Clear the label's text
-    //     })
-    // );
-    // timeline.setCycleCount(1);
-    // timeline.setOnFinished(event -> {
-    //     label.setVisible(true);
-    // });
+    if (GameState.isGameStarted) {
+      timeline = new Timeline(new KeyFrame(Duration.seconds(1), this::updateTimer));
+      timeline.setCycleCount(Timeline.INDEFINITE);
+      timeline.play();
+    }
   }
 
   private void setPlayerNameLabel() {
@@ -74,21 +68,15 @@ public class RoomController {
   }
 
   private void updateTimer(ActionEvent event) {
-    seconds++;
+    seconds--;
     timerLabel.setText("Time: " + seconds + " seconds");
-    // if (seconds == 20) {
-    //   timeline.stop();
-    //   showDialog("Info", "Time Out", "You ran out of time!");
-    // } else if (seconds == 10) {
-    //   showLabel("Hello, world!");
-    // }
+    if (seconds == 0) {
+      timeline.stop();
+      showDialog("Info", "Time Out", "You ran out of time!");
+    } else if (seconds == 30) {
+      showDialog("Info", "30 seconds Left", "You only got 30 seconds to escape the room!");
+    }
   }
-
-  // public void showLabel(String message) {
-  //   label.setText(message);
-  //   label.setVisible(true);
-  //   timeline.playFromStart();
-  // }
 
   /**
    * Handles the key pressed event.
@@ -122,32 +110,8 @@ public class RoomController {
     alert.setTitle(title);
     alert.setHeaderText(headerText);
     alert.setContentText(message);
-    alert.showAndWait();
+    alert.show();
   }
-
-  /**
-   * Handles the click event on the door.
-   *
-   * @param event the mouse event
-   * @throws IOException if there is an error loading the chat view
-   */
-  // @FXML
-  // public void clickDoor(MouseEvent event) throws IOException {
-  //   System.out.println("door clicked");
-
-  //   if (!GameState.isRiddleResolved) {
-  //     showDialog("Info", "Riddle", "You need to resolve the riddle!");
-  //     App.setRoot("chat");
-  //     return;
-  //   }
-
-  //   if (!GameState.isKeyFound) {
-  //     showDialog(
-  //         "Info", "Find the key!", "You resolved the riddle, now you know where the key is.");
-  //   } else {
-  //     showDialog("Info", "You Won!", "Good Job!");
-  //   }
-  // }
 
   /**
    * Handles the click event on the perfume.
@@ -235,6 +199,43 @@ public class RoomController {
                 firstClickOccurred = true; // Set the flag to true after the first click
               }
             }
+            return null;
+          }
+        };
+
+    // Execute the task in a new thread
+    Thread thread = new Thread(task);
+    thread.start();
+  }
+
+  public void clickHintButton(ActionEvent event) throws IOException {
+    GameState.isHintClicked = true;
+    Task<Void> task =
+        new Task<>() {
+          @Override
+          protected Void call() throws Exception {
+            // Change to the chat scene
+            Platform.runLater(
+                () -> {
+                  App.setScene(AppUi.HINT);
+                });
+
+            // Run GPT and text-to-speech concurrently in the chat scene
+            // This code will execute after changing to the chat scene
+            // Assuming you have a TextToSpeech class or utility
+            TextToSpeech textToSpeech = new TextToSpeech();
+
+            // Assuming you have a response from GPT
+            String gptResponse = "The first sentence of the response from GPT.";
+
+            // Find the first sentence in the response
+            // int periodIndex = gptResponse.indexOf('.');
+            // if (periodIndex != -1) {
+            //   String firstSentence = gptResponse.substring(0, periodIndex + 1);
+            //   textToSpeech.speak(firstSentence);
+            //   // Check if this is the first click
+
+            // }
             return null;
           }
         };

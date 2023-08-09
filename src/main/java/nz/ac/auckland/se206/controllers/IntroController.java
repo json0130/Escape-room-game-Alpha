@@ -56,6 +56,7 @@ public class IntroController {
   public void gameStart() throws IOException {
     System.out.println("Switching to room");
     // App.setRoot("room");
+    GameState.isGameStarted = true;
     App.setScene(AppUi.ROOM);
   }
 }

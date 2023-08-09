@@ -1,7 +1,6 @@
 package nz.ac.auckland.se206.controllers;
 
 import java.io.IOException;
-import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -16,9 +15,10 @@ import nz.ac.auckland.se206.gpt.openai.ApiProxyException;
 import nz.ac.auckland.se206.gpt.openai.ChatCompletionRequest;
 import nz.ac.auckland.se206.gpt.openai.ChatCompletionResult;
 import nz.ac.auckland.se206.gpt.openai.ChatCompletionResult.Choice;
+import nz.ac.auckland.se206.speech.TextToSpeech;
 
 /** Controller class for the chat view. */
-public class ChatController {
+public class HintController {
   @FXML private TextArea chatTextArea;
   @FXML private TextField inputText;
   @FXML private Button sendButton;
@@ -32,23 +32,9 @@ public class ChatController {
    */
   @FXML
   public void initialize() throws ApiProxyException {
-
-    Task<Void> chatview =
-        new Task<Void>() {
-          @Override
-          protected Void call() throws Exception {
-            chatCompletionRequest =
-                new ChatCompletionRequest()
-                    .setN(1)
-                    .setTemperature(0.2)
-                    .setTopP(0.5)
-                    .setMaxTokens(100);
-            runGpt(new ChatMessage("user", GptPromptEngineering.getRiddleWithGivenWord("rose")));
-            return null;
-          }
-        };
-    Thread chatviewThread = new Thread(chatview);
-    chatviewThread.start();
+    chatCompletionRequest =
+        new ChatCompletionRequest().setN(1).setTemperature(0.2).setTopP(0.5).setMaxTokens(100);
+    runGpt(new ChatMessage("user", GptPromptEngineering.getHintWithGivenWord()));
   }
 
   /**
