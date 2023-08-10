@@ -6,78 +6,109 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
-<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<Pane fx:id="room" focusTraversable="true" onKeyPressed="#onKeyPressed" onKeyReleased="#onKeyReleased" prefHeight="441.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.RoomController">
+<Pane fx:id="room" focusTraversable="true" onKeyPressed="#onKeyPressed" onKeyReleased="#onKeyReleased" prefHeight="438.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.RoomController">
    <children>
       <ImageView fitHeight="406.0" fitWidth="643.0" layoutX="-21.0" layoutY="36.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/background.jpg" />
          </image>
       </ImageView>
-      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="306.0" layoutY="219.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="doorlock" fitHeight="68.0" fitWidth="68.0" layoutX="288.0" layoutY="256.0" onMouseClicked="#clickdoor" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/doorlock.jpeg" />
+            <Image url="@../images/Lock%20(2).png" />
          </image>
       </ImageView>
-      <ImageView fx:id="perfumeImage1" fitHeight="60.0" fitWidth="60.0" layoutX="144.0" layoutY="101.0" onMouseClicked="#clickPerfume" onMouseEntered="#perfumeMouseEntered" onMouseExited="#perfumeMouseExited" pickOnBounds="true" preserveRatio="true" visible="false">
+      <ImageView fitHeight="55.0" fitWidth="49.0" layoutX="135.0" layoutY="116.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/perfume%206.jpeg" />
+            <Image url="@../images/B1.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="perfumeImage5" fitHeight="56.0" fitWidth="56.0" layoutX="144.0" layoutY="274.0" onMouseClicked="#clickPerfume" onMouseEntered="#perfumeMouseEntered" onMouseExited="#perfumeMouseExited" pickOnBounds="true" preserveRatio="true" visible="false">
+      <ImageView fx:id="perfume5" fitHeight="55.0" fitWidth="44.0" layoutX="137.0" layoutY="116.0" onMouseClicked="#clickPerfume" onMouseEntered="#perfume5MouseEntered" onMouseExited="#perfume5MouseExited" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/perfume2.jpeg" />
+            <Image url="@../images/P5.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="perfumeImage" fitHeight="83.0" fitWidth="79.0" layoutX="30.0" layoutY="186.0" onMouseClicked="#clickPerfume" onMouseEntered="#perfumeMouseEntered" onMouseExited="#perfumeMouseExited" pickOnBounds="true" preserveRatio="true" visible="false">
+      <ImageView fitHeight="84.0" fitWidth="68.0" layoutX="55.0" layoutY="194.0" pickOnBounds="true" preserveRatio="true" visible="false">
          <image>
-            <Image url="@../images/perfume%207.jpeg" />
+            <Image url="@../images/B2.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="perfumeImage2" fitHeight="48.0" fitWidth="56.0" layoutX="464.0" layoutY="201.0" onMouseClicked="#clickPerfume" onMouseEntered="#perfumeMouseEntered" onMouseExited="#perfumeMouseExited" pickOnBounds="true" preserveRatio="true" visible="false">
+      <ImageView fx:id="perfume3" fitHeight="84.0" fitWidth="58.0" layoutX="62.0" layoutY="192.0" onMouseClicked="#clickPerfume" onMouseEntered="#perfume3MouseEntered" onMouseExited="#perfume3MouseExited" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/perfume5.jpg" />
+            <Image url="@../images/P3.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="perfumeImage6" fitHeight="41.0" fitWidth="40.0" layoutX="422.0" layoutY="350.0" onMouseClicked="#clickPerfume" onMouseEntered="#perfumeMouseEntered" onMouseExited="#perfumeMouseExited" pickOnBounds="true" preserveRatio="true" visible="false">
+      <ImageView fitHeight="45.0" fitWidth="36.0" layoutX="149.0" layoutY="216.0" pickOnBounds="true" preserveRatio="true" visible="false">
          <image>
-            <Image url="@../images/perfume1.png" />
+            <Image url="@../images/B3.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="perfumeImage4" fitHeight="56.0" fitWidth="31.0" layoutX="456.0" layoutY="80.0" onMouseClicked="#clickPerfume" onMouseEntered="#perfumeMouseEntered" onMouseExited="#perfumeMouseExited" pickOnBounds="true" preserveRatio="true" visible="false">
+      <ImageView fx:id="perfume7" fitHeight="42.0" fitWidth="42.0" layoutX="430.0" layoutY="122.0" onMouseClicked="#clickPerfume" onMouseEntered="#perfume2MouseEntered" onMouseExited="#perfume2MouseExited" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/perfume3.jpeg" />
+            <Image url="@../images/P2.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="perfumeImage3" fitHeight="60.0" fitWidth="60.0" layoutX="39.0" layoutY="340.0" onMouseClicked="#clickPerfume" onMouseEntered="#perfumeMouseEntered" onMouseExited="#perfumeMouseExited" pickOnBounds="true" preserveRatio="true" visible="false">
+      <ImageView fitHeight="55.0" fitWidth="50.0" layoutX="104.0" layoutY="320.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/perfume4.jpg" />
+            <Image url="@../images/B4.png" />
          </image>
       </ImageView>
-      <Label layoutX="7.0" layoutY="1.0" prefHeight="41.0" prefWidth="431.0" text="ESCAPE ROOM SE206" textFill="#4e4e4e">
+      <ImageView fx:id="perfume4" fitHeight="62.0" fitWidth="36.0" layoutX="111.0" layoutY="322.0" onMouseClicked="#clickPerfume" onMouseEntered="#perfume4MouseEntered" onMouseExited="#perfume4MouseExited" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/P4.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="58.0" fitWidth="51.0" layoutX="455.0" layoutY="311.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/B5.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="perfume1" fitHeight="56.0" fitWidth="56.0" layoutX="451.0" layoutY="309.0" onMouseClicked="#clickPerfume" onMouseEntered="#perfume1MouseEntered" onMouseExited="#perfume1MouseExited" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/P1.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="72.0" fitWidth="62.0" layoutX="505.0" layoutY="203.0" opacity="0.63" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/B6.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="perfume6" fitHeight="60.0" fitWidth="56.0" layoutX="514.0" layoutY="206.0" onMouseClicked="#clickPerfume" onMouseEntered="#perfume6MouseEntered" onMouseExited="#perfume6MouseExited" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/P6.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="46.0" fitWidth="39.0" layoutX="427.0" layoutY="128.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/B7.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="perfume7" fitHeight="49.0" fitWidth="49.0" layoutX="421.0" layoutY="116.0" onMouseClicked="#clickPerfume" onMouseEntered="#perfume7MouseEntered" onMouseExited="#perfume7MouseExited" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/P2.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="14.0" layoutY="2.0" prefHeight="41.0" prefWidth="219.0" text="ESCAPE ROOM SE206" textFill="#4e4e4e">
          <font>
-            <Font name="Arial" size="28.0" />
+            <Font name="Arial" size="15.0" />
          </font>
       </Label>
-      <Rectangle fx:id="doorlock" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff" focusTraversable="true" height="60.0" layoutX="306.0" layoutY="217.0" onMouseClicked="#clickdoor" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="60.0" />
-      <Rectangle fx:id="perfume" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff" focusTraversable="true" height="48.0" layoutX="486.0" layoutY="306.0" onMouseClicked="#clickPerfume" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="31.0" />
-      <ImageView fx:id="letter" fitHeight="60.0" fitWidth="70.0" layoutX="222.0" layoutY="360.0" pickOnBounds="true" preserveRatio="true" visible="false">
+      <ImageView fx:id="letterclicked" fitHeight="60.0" fitWidth="70.0" layoutX="209.0" layoutY="362.0" onMouseClicked="#clickletter" pickOnBounds="true" preserveRatio="true" visible="false">
          <image>
-            <Image url="@../images/letter.jpeg" />
+            <Image url="@../images/Letter.png" />
          </image>
       </ImageView>
-      <Rectangle fx:id="letterclicked" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff" focusTraversable="true" height="60.0" layoutX="222.0" layoutY="390.0" onMouseClicked="#clickletter" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="60.0" />
-      <Label fx:id="timerLabel" layoutX="472.0" layoutY="41.0" prefHeight="18.0" prefWidth="128.0" text="Timer : 100 seconds" textFill="WHITE">
+      <Label fx:id="timerLabel" layoutX="239.0" layoutY="12.0" prefHeight="20.0" prefWidth="134.0" text="Timer : 100 seconds" textFill="#cc000e">
          <font>
-            <Font size="14.0" />
+            <Font size="15.0" />
          </font>
       </Label>
       <ProgressBar fx:id="progressBar" layoutX="14.0" layoutY="42.0" opacity="0.84" prefHeight="18.0" prefWidth="274.0" progress="0.0" />
-      <Label fx:id="playerNameLabel" layoutX="381.0" layoutY="11.0" prefHeight="20.0" prefWidth="218.0" text="Label">
+      <Label fx:id="playerNameLabel" layoutX="421.0" layoutY="12.0" prefHeight="20.0" prefWidth="134.0" text="Label">
          <font>
-            <Font size="14.0" />
+            <Font size="15.0" />
          </font>
       </Label>
       <Button fx:id="hintButton" layoutX="528.0" layoutY="402.0" mnemonicParsing="false" onAction="#clickHintButton" prefHeight="25.0" prefWidth="60.0" text="Hint" />

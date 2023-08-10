@@ -14,6 +14,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.TextInputDialog;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
@@ -22,7 +23,6 @@ import javafx.util.Duration;
 import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.GameState;
 import nz.ac.auckland.se206.SceneManager.AppUi;
-import nz.ac.auckland.se206.gpt.GptPromptEngineering;
 import nz.ac.auckland.se206.speech.TextToSpeech;
 
 /** Controller class for the room view. */
@@ -30,7 +30,7 @@ public class RoomController {
 
   @FXML private Rectangle door;
   @FXML private Rectangle doorLock;
-  @FXML private ImageView letter;
+  @FXML private ImageView letterclicked;
   @FXML private Label timerLabel;
   @FXML private Label label;
   @FXML private ProgressBar progressBar;
@@ -38,25 +38,26 @@ public class RoomController {
   @FXML private Button hintButton;
 
   @FXML private ImageView perfume1;
-  @FXML private ImageView perfume2;
+  Image perfume1Image = new Image(getClass().getResourceAsStream("/images/P1.png"));
+  Image perfume1ChangedImage = new Image(getClass().getResourceAsStream("/images/B5.png"));
+  // @FXML private ImageView perfume2;
+  // Image perfume2Image = new Image(getClass().getResourceAsStream("/images/P2.png"));
+  // Image perfume2ChangedImage = new Image(getClass().getResourceAsStream("/images/B3.png"));
   @FXML private ImageView perfume3;
+  Image perfume3Image = new Image(getClass().getResourceAsStream("/images/P3.png"));
+  Image perfume3ChangedImage = new Image(getClass().getResourceAsStream("/images/B2.png"));
   @FXML private ImageView perfume4;
+  Image perfume4Image = new Image(getClass().getResourceAsStream("/images/P4.png"));
+  Image perfume4ChangedImage = new Image(getClass().getResourceAsStream("/images/B4.png"));
   @FXML private ImageView perfume5;
+  Image perfume5Image = new Image(getClass().getResourceAsStream("/images/P5.png"));
+  Image perfume5ChangedImage = new Image(getClass().getResourceAsStream("/images/B1.png"));
   @FXML private ImageView perfume6;
+  Image perfume6Image = new Image(getClass().getResourceAsStream("/images/P6.png"));
+  Image perfume6ChangedImage = new Image(getClass().getResourceAsStream("/images/B6.png"));
   @FXML private ImageView perfume7;
-
-  /*
-  @FXML private ImageView perfumeImage = new ImageView(perfume7);
-  @FXML private ImageView perfumeImage1 = new ImageView(perfume6);
-  @FXML private ImageView perfumeImage2 = new ImageView(perfume5);
-  @FXML private ImageView perfumeImage3 = new ImageView(perfume4);
-  @FXML private ImageView perfumeImage4 = new ImageView(perfume3);
-  @FXML private ImageView perfumeImage5 = new ImageView(perfume2);
-
-  */
-
-  // private Image perfume1 = new Image("images/perfume1.png");
-  // @FXML private ImageView perfumeImage6 = new ImageView(perfume1);
+  Image perfume7Image = new Image(getClass().getResourceAsStream("/images/P2.png"));
+  Image perfume7ChangedImage = new Image(getClass().getResourceAsStream("/images/B7.png"));
 
   private int counter = 0;
   private int seconds = 100;
@@ -87,22 +88,17 @@ public class RoomController {
     timeline = new Timeline(new KeyFrame(Duration.seconds(1), this::updateTimer));
     timeline.setCycleCount(Timeline.INDEFINITE);
     timeline.play();
+    initializeImage();
+  }
 
-    // Set mouse hover event handlers for perfumes
-    // perfume1.setOnMouseEntered(this::perfumeMouseEntered);
-    // perfume1.setOnMouseExited(this::perfumeMouseExited);
-    // perfume2.setOnMouseEntered(this::perfumeMouseEntered);
-    // perfume2.setOnMouseExited(this::perfumeMouseExited);
-    // perfume3.setOnMouseEntered(this::perfumeMouseEntered);
-    // perfume3.setOnMouseExited(this::perfumeMouseExited);
-    // perfume4.setOnMouseEntered(this::perfumeMouseEntered);
-    // perfume4.setOnMouseExited(this::perfumeMouseExited);
-    // perfume5.setOnMouseEntered(this::perfumeMouseEntered);
-    // perfume5.setOnMouseExited(this::perfumeMouseExited);
-    // perfume6.setOnMouseEntered(this::perfumeMouseEntered);
-    // perfume6.setOnMouseExited(this::perfumeMouseExited);
-    // perfume7.setOnMouseEntered(this::perfumeMouseEntered);
-    // perfume7.setOnMouseExited(this::perfumeMouseExited);
+  private void initializeImage() {
+    perfume1.setImage(perfume1ChangedImage);
+    // perfume2.setImage(perfume2ChangedImage);
+    perfume3.setImage(perfume3ChangedImage);
+    perfume4.setImage(perfume4ChangedImage);
+    perfume5.setImage(perfume5ChangedImage);
+    perfume6.setImage(perfume6ChangedImage);
+    perfume7.setImage(perfume7ChangedImage);
   }
 
   private void setPlayerNameLabel() {
@@ -176,22 +172,12 @@ public class RoomController {
   @FXML
   public void clickPerfume(MouseEvent event) {
     perfumeClicked();
-    // toggleVisibility();
-    if (counter == 5) {
-      counter = 5;
-      // toggleVisibility1();
-      // perfume1.setOpacity(0);
+    if (counter == 7) {
+      counter = 7;
       GameState.isPerfumeColledted = true;
-      letter.setVisible(true);
+      letterclicked.setVisible(true);
       showDialog("Info", "Perfume Collected", "You collected all of the Perfume!");
-      perfume1.setVisible(false);
-      // Make the perfumeImage ImageView disappear
     }
-
-    // if (GameState.isRiddleResolved && !GameState.isKeyFound) {
-    //   showDialog("Info", "Key Found", "You found a key under the vase!");
-    //   GameState.isKeyFound = true;
-    // }
   }
 
   /**
@@ -208,15 +194,73 @@ public class RoomController {
   }
 
   @FXML
-  private void perfumeMouseEntered(MouseEvent event) {
-    // ImageView perfume = (ImageView) event.getSource();
-    perfume1.setVisible(true);
+  private void perfume1MouseEntered() {
+    perfume1.setImage(perfume1Image);
   }
 
   @FXML
-  private void perfumeMouseExited(MouseEvent event) {
-    // ImageView perfume = (ImageView) event.getSource();
-    perfume1.setVisible(false);
+  private void perfume1MouseExited() {
+    perfume1.setImage(perfume1ChangedImage);
+  }
+
+  // @FXML
+  // private void perfume2MouseEntered() {
+  //   perfume2.setImage(perfume2Image);
+  // }
+
+  // @FXML
+  // private void perfume2MouseExited() {
+  //   perfume2.setImage(perfume2ChangedImage);
+  // }
+
+  @FXML
+  private void perfume3MouseEntered() {
+    perfume3.setImage(perfume3Image);
+  }
+
+  @FXML
+  private void perfume3MouseExited() {
+    perfume3.setImage(perfume3ChangedImage);
+  }
+
+  @FXML
+  private void perfume4MouseEntered() {
+    perfume4.setImage(perfume4Image);
+  }
+
+  @FXML
+  private void perfume4MouseExited() {
+    perfume4.setImage(perfume4ChangedImage);
+  }
+
+  @FXML
+  private void perfume5MouseEntered() {
+    perfume5.setImage(perfume5Image);
+  }
+
+  @FXML
+  private void perfume5MouseExited() {
+    perfume5.setImage(perfume5ChangedImage);
+  }
+
+  @FXML
+  private void perfume6MouseEntered() {
+    perfume6.setImage(perfume6Image);
+  }
+
+  @FXML
+  private void perfume6MouseExited() {
+    perfume6.setImage(perfume6ChangedImage);
+  }
+
+  @FXML
+  private void perfume7MouseEntered() {
+    perfume7.setImage(perfume7ChangedImage);
+  }
+
+  @FXML
+  private void perfume7MouseExited() {
+    perfume7.setImage(perfume7ChangedImage);
   }
 
   /**
@@ -251,22 +295,14 @@ public class RoomController {
                   App.setScene(AppUi.CHAT);
                 });
 
-            // Run GPT and get the response
-            String gptResponse =
-                GptPromptEngineering.getRiddleWithGivenWord(
-                    "candle"); // Call a method to run GPT and get the response
+            String firstSentence =
+                "Hey" + GameState.playerName + "You have to solve the riddle to unlock the door.";
 
-            // Find the first sentence in the response
-            int periodIndex = gptResponse.indexOf('.');
-            if (periodIndex != -1) {
-              String firstSentence = gptResponse.substring(0, periodIndex + 1);
-
-              // Text-to-speech the first sentence only if it hasn't been spoken before
-              if (!firstClickOccurred) {
-                TextToSpeech textToSpeech = new TextToSpeech();
-                textToSpeech.speak(firstSentence);
-                firstClickOccurred = true;
-              }
+            // Text-to-speech the first sentence only if it hasn't been spoken before
+            if (!firstClickOccurred) {
+              TextToSpeech textToSpeech = new TextToSpeech();
+              textToSpeech.speak(firstSentence);
+              firstClickOccurred = true;
             }
             return null;
           }
@@ -289,22 +325,12 @@ public class RoomController {
                   App.setScene(AppUi.HINT);
                 });
             // Run GPT and get the response
-
-            String gptResponse =
-                GptPromptEngineering
-                    .getHintWithGivenWord(); // Call a method to run GPT and get the response
-
-            // Find the first sentence in the response
-            int periodIndex = gptResponse.indexOf('.');
-            if (periodIndex != -1) {
-              String firstSentence = gptResponse.substring(0, periodIndex + 1);
-
-              // Text-to-speech the first sentence only if it hasn't been spoken before
-              if (!firstClickOccurred1) {
-                TextToSpeech textToSpeech = new TextToSpeech();
-                textToSpeech.speak(firstSentence);
-                firstClickOccurred1 = true;
-              }
+            String firstSentence = "How can I help you?, Please let me know if you need and help.";
+            // Text-to-speech the first sentence only if it hasn't been spoken before
+            if (!firstClickOccurred1) {
+              TextToSpeech textToSpeech = new TextToSpeech();
+              textToSpeech.speak(firstSentence);
+              firstClickOccurred1 = true;
             }
 
             return null;

@@ -53,7 +53,7 @@ public class App extends Application {
     SceneManager.addScene(AppUi.CHAT, loadFxml("chat"));
     SceneManager.addScene(AppUi.LOCK, loadFxml("lock"));
     SceneManager.addScene(AppUi.ROOM, loadFxml("room"));
-    scene = new Scene(SceneManager.getScene(AppUi.ROOM), 610, 480);
+    scene = new Scene(SceneManager.getScene(AppUi.ROOM), 610, 450);
     stage.setScene(scene);
     stage.show();
   }

@@ -32,7 +32,6 @@ public class ChatController {
    */
   @FXML
   public void initialize() throws ApiProxyException {
-
     Task<Void> chatview =
         new Task<Void>() {
           @Override
