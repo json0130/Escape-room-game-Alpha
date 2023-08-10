@@ -21,12 +21,6 @@ public class GptPromptEngineering {
         + " the answer";
   }
 
-  /**
-   * Generates a GPT prompt engineering string for a hint.
-   *
-   * @return the generated prompt engineering string
-   */
-
   public static String getHintWithGivenWord() {
     String prompt;
     if (GameState.isGameStarted) {

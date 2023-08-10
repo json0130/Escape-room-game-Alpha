@@ -100,8 +100,6 @@ public class HintController {
     ChatMessage lastMsg = runGpt(msg);
     if (lastMsg.getRole().equals("assistant") && lastMsg.getContent().startsWith("Correct")) {
       GameState.isRiddleResolved = true;
-      // TextToSpeech textToSpeech = new TextToSpeech();
-      // textToSpeech.speak("Correct! You have solved the riddle!");
     }
   }
 

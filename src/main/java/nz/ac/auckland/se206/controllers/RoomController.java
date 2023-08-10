@@ -14,6 +14,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.TextInputDialog;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
@@ -36,27 +37,27 @@ public class RoomController {
   @FXML private Label playerNameLabel;
   @FXML private Button hintButton;
 
-  // @FXML private ImageView perfume1;
-  // Image perfume1Image = new Image(getClass().getResourceAsStream("/images/P1.png"));
-  // Image perfume1ChangedImage = new Image(getClass().getResourceAsStream("/images/B5.png"));
+  @FXML private ImageView perfume1;
+  Image perfume1Image = new Image(getClass().getResourceAsStream("/images/P1.png"));
+  Image perfume1ChangedImage = new Image(getClass().getResourceAsStream("/images/B5.png"));
   // @FXML private ImageView perfume2;
   // Image perfume2Image = new Image(getClass().getResourceAsStream("/images/P2.png"));
   // Image perfume2ChangedImage = new Image(getClass().getResourceAsStream("/images/B3.png"));
-  // @FXML private ImageView perfume3;
-  // Image perfume3Image = new Image(getClass().getResourceAsStream("/images/P3.png"));
-  // Image perfume3ChangedImage = new Image(getClass().getResourceAsStream("/images/B2.png"));
-  // @FXML private ImageView perfume4;
-  // Image perfume4Image = new Image(getClass().getResourceAsStream("/images/P4.png"));
-  // Image perfume4ChangedImage = new Image(getClass().getResourceAsStream("/images/B4.png"));
-  // @FXML private ImageView perfume5;
-  // Image perfume5Image = new Image(getClass().getResourceAsStream("/images/P5.png"));
-  // Image perfume5ChangedImage = new Image(getClass().getResourceAsStream("/images/B1.png"));
-  // @FXML private ImageView perfume6;
-  // Image perfume6Image = new Image(getClass().getResourceAsStream("/images/P6.png"));
-  // Image perfume6ChangedImage = new Image(getClass().getResourceAsStream("/images/B6.png"));
-  // @FXML private ImageView perfume7;
-  // Image perfume7Image = new Image(getClass().getResourceAsStream("/images/P2.png"));
-  // Image perfume7ChangedImage = new Image(getClass().getResourceAsStream("/images/B7.png"));
+  @FXML private ImageView perfume3;
+  Image perfume3Image = new Image(getClass().getResourceAsStream("/images/P3.png"));
+  Image perfume3ChangedImage = new Image(getClass().getResourceAsStream("/images/B2.png"));
+  @FXML private ImageView perfume4;
+  Image perfume4Image = new Image(getClass().getResourceAsStream("/images/P4.png"));
+  Image perfume4ChangedImage = new Image(getClass().getResourceAsStream("/images/B4.png"));
+  @FXML private ImageView perfume5;
+  Image perfume5Image = new Image(getClass().getResourceAsStream("/images/P5.png"));
+  Image perfume5ChangedImage = new Image(getClass().getResourceAsStream("/images/B1.png"));
+  @FXML private ImageView perfume6;
+  Image perfume6Image = new Image(getClass().getResourceAsStream("/images/P6.png"));
+  Image perfume6ChangedImage = new Image(getClass().getResourceAsStream("/images/B6.png"));
+  @FXML private ImageView perfume7;
+  Image perfume7Image = new Image(getClass().getResourceAsStream("/images/P2.png"));
+  Image perfume7ChangedImage = new Image(getClass().getResourceAsStream("/images/B7.png"));
 
   private int counter = 0;
   private int seconds = 100;
@@ -87,18 +88,18 @@ public class RoomController {
     timeline = new Timeline(new KeyFrame(Duration.seconds(1), this::updateTimer));
     timeline.setCycleCount(Timeline.INDEFINITE);
     timeline.play();
-    // initializeImage();
+    initializeImage();
   }
 
-  // private void initializeImage() {
-  //   perfume1.setImage(perfume1ChangedImage);
-  //   // perfume2.setImage(perfume2ChangedImage);
-  //   perfume3.setImage(perfume3ChangedImage);
-  //   perfume4.setImage(perfume4ChangedImage);
-  //   perfume5.setImage(perfume5ChangedImage);
-  //   perfume6.setImage(perfume6ChangedImage);
-  //   perfume7.setImage(perfume7ChangedImage);
-  // }
+  private void initializeImage() {
+    perfume1.setImage(perfume1ChangedImage);
+    // perfume2.setImage(perfume2ChangedImage);
+    perfume3.setImage(perfume3ChangedImage);
+    perfume4.setImage(perfume4ChangedImage);
+    perfume5.setImage(perfume5ChangedImage);
+    perfume6.setImage(perfume6ChangedImage);
+    perfume7.setImage(perfume7ChangedImage);
+  }
 
   private void setPlayerNameLabel() {
     Task<Void> playerNameTask =
@@ -171,8 +172,8 @@ public class RoomController {
   @FXML
   public void clickPerfume(MouseEvent event) {
     perfumeClicked();
-    if (counter == 7) {
-      counter = 7;
+    if (counter == 5) {
+      counter = 5;
       GameState.isPerfumeColledted = true;
       letterclicked.setVisible(true);
       showDialog("Info", "Perfume Collected", "You collected all of the Perfume!");
@@ -192,75 +193,75 @@ public class RoomController {
     System.out.println("counter: " + counter);
   }
 
+  @FXML
+  private void perfume1MouseEntered() {
+    perfume1.setImage(perfume1Image);
+  }
+
+  @FXML
+  private void perfume1MouseExited() {
+    perfume1.setImage(perfume1ChangedImage);
+  }
+
   // @FXML
-  // private void perfume1MouseEntered() {
-  //   perfume1.setImage(perfume1Image);
+  // private void perfume2MouseEntered() {
+  //   perfume2.setImage(perfume2Image);
   // }
 
   // @FXML
-  // private void perfume1MouseExited() {
-  //   perfume1.setImage(perfume1ChangedImage);
+  // private void perfume2MouseExited() {
+  //   perfume2.setImage(perfume2ChangedImage);
   // }
 
-  // // @FXML
-  // // private void perfume2MouseEntered() {
-  // //   perfume2.setImage(perfume2Image);
-  // // }
+  @FXML
+  private void perfume3MouseEntered() {
+    perfume3.setImage(perfume3Image);
+  }
 
-  // // @FXML
-  // // private void perfume2MouseExited() {
-  // //   perfume2.setImage(perfume2ChangedImage);
-  // // }
+  @FXML
+  private void perfume3MouseExited() {
+    perfume3.setImage(perfume3ChangedImage);
+  }
 
-  // @FXML
-  // private void perfume3MouseEntered() {
-  //   perfume3.setImage(perfume3Image);
-  // }
+  @FXML
+  private void perfume4MouseEntered() {
+    perfume4.setImage(perfume4Image);
+  }
 
-  // @FXML
-  // private void perfume3MouseExited() {
-  //   perfume3.setImage(perfume3ChangedImage);
-  // }
+  @FXML
+  private void perfume4MouseExited() {
+    perfume4.setImage(perfume4ChangedImage);
+  }
 
-  // @FXML
-  // private void perfume4MouseEntered() {
-  //   perfume4.setImage(perfume4Image);
-  // }
+  @FXML
+  private void perfume5MouseEntered() {
+    perfume5.setImage(perfume5Image);
+  }
 
-  // @FXML
-  // private void perfume4MouseExited() {
-  //   perfume4.setImage(perfume4ChangedImage);
-  // }
+  @FXML
+  private void perfume5MouseExited() {
+    perfume5.setImage(perfume5ChangedImage);
+  }
 
-  // @FXML
-  // private void perfume5MouseEntered() {
-  //   perfume5.setImage(perfume5Image);
-  // }
+  @FXML
+  private void perfume6MouseEntered() {
+    perfume6.setImage(perfume6Image);
+  }
 
-  // @FXML
-  // private void perfume5MouseExited() {
-  //   perfume5.setImage(perfume5ChangedImage);
-  // }
+  @FXML
+  private void perfume6MouseExited() {
+    perfume6.setImage(perfume6ChangedImage);
+  }
 
-  // @FXML
-  // private void perfume6MouseEntered() {
-  //   perfume6.setImage(perfume6Image);
-  // }
+  @FXML
+  private void perfume7MouseEntered() {
+    perfume7.setImage(perfume7Image);
+  }
 
-  // @FXML
-  // private void perfume6MouseExited() {
-  //   perfume6.setImage(perfume6ChangedImage);
-  // }
-
-  // @FXML
-  // private void perfume7MouseEntered() {
-  //   perfume7.setImage(perfume7ChangedImage);
-  // }
-
-  // @FXML
-  // private void perfume7MouseExited() {
-  //   perfume7.setImage(perfume7ChangedImage);
-  // }
+  @FXML
+  private void perfume7MouseExited() {
+    perfume7.setImage(perfume7ChangedImage);
+  }
 
   /**
    * Handles the click event on the window.
@@ -270,7 +271,7 @@ public class RoomController {
    */
   @FXML
   public void clickdoor(MouseEvent event) throws IOException {
-    if (!GameState.isRiddleResolved || !GameState.isPerfumeColledted) {
+    if (!GameState.isRiddleResolved && !GameState.isPerfumeColledted) {
       showDialog("Info", "Door Locked", "You need to collect all of the Perfume!");
     } else if (!GameState.isRiddleResolved) {
       showDialog("Info", "Door Locked", "You need to solve the riddle!");
