@@ -45,11 +45,6 @@
             <Image url="@../images/B3.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="perfume7" fitHeight="42.0" fitWidth="42.0" layoutX="430.0" layoutY="122.0" onMouseClicked="#clickPerfume" onMouseEntered="#perfume2MouseEntered" onMouseExited="#perfume2MouseExited" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../images/P2.png" />
-         </image>
-      </ImageView>
       <ImageView fitHeight="55.0" fitWidth="50.0" layoutX="104.0" layoutY="320.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/B4.png" />
