@@ -38,23 +38,23 @@ public class RoomController {
   @FXML private Button hintButton;
 
   @FXML private ImageView perfume1;
-  Image perfume1Image = new Image(getClass().getResourceAsStream("/images/P1.png"));
-  Image perfume1ChangedImage = new Image(getClass().getResourceAsStream("/images/B5.png"));
+  private Image perfume1Image = new Image(getClass().getResourceAsStream("/images/P1.png"));
+  private Image perfume1ChangedImage = new Image(getClass().getResourceAsStream("/images/B5.png"));
   @FXML private ImageView perfume3;
-  Image perfume3Image = new Image(getClass().getResourceAsStream("/images/P3.png"));
-  Image perfume3ChangedImage = new Image(getClass().getResourceAsStream("/images/B2.png"));
+  private Image perfume3Image = new Image(getClass().getResourceAsStream("/images/P3.png"));
+  private Image perfume3ChangedImage = new Image(getClass().getResourceAsStream("/images/B2.png"));
   @FXML private ImageView perfume4;
-  Image perfume4Image = new Image(getClass().getResourceAsStream("/images/P4.png"));
-  Image perfume4ChangedImage = new Image(getClass().getResourceAsStream("/images/B7.png"));
+  private Image perfume4Image = new Image(getClass().getResourceAsStream("/images/P4.png"));
+  private Image perfume4ChangedImage = new Image(getClass().getResourceAsStream("/images/B7.png"));
   @FXML private ImageView perfume5;
-  Image perfume5Image = new Image(getClass().getResourceAsStream("/images/P5.png"));
-  Image perfume5ChangedImage = new Image(getClass().getResourceAsStream("/images/B1.png"));
+  private Image perfume5Image = new Image(getClass().getResourceAsStream("/images/P5.png"));
+  private Image perfume5ChangedImage = new Image(getClass().getResourceAsStream("/images/B1.png"));
   @FXML private ImageView perfume6;
-  Image perfume6Image = new Image(getClass().getResourceAsStream("/images/P6.png"));
-  Image perfume6ChangedImage = new Image(getClass().getResourceAsStream("/images/B6.png"));
+  private Image perfume6Image = new Image(getClass().getResourceAsStream("/images/P6.png"));
+  private Image perfume6ChangedImage = new Image(getClass().getResourceAsStream("/images/B6.png"));
   @FXML private ImageView perfume7;
-  Image perfume7Image = new Image(getClass().getResourceAsStream("/images/P2.png"));
-  Image perfume7ChangedImage = new Image(getClass().getResourceAsStream("/images/B4.png"));
+  private Image perfume7Image = new Image(getClass().getResourceAsStream("/images/P2.png"));
+  private Image perfume7ChangedImage = new Image(getClass().getResourceAsStream("/images/B4.png"));
 
   private int counter = 0;
   private int seconds = 100;
@@ -78,10 +78,11 @@ public class RoomController {
     alert.setTitle("Welcome!");
     alert.setHeaderText("SE206 Perfume Shop");
     String alertContentText =
-        "Welcome to SE206 Perfume shop Escape room!"
-            + "\n You are locked in the storage room of a perfume shop and needed to escape as soon"
-            + "\n as possible, and you only have 100 seconds to escape the room."
-            + "\n Best of your luck and find me anytime when you need help.";
+        "Welcome to SE206 Perfume shop Escape room!\n"
+            + " You are locked in the storage room of a perfume shop and needed to escape as soon"
+            + " as possible.\n"
+            + " You only have 100 seconds to escape the room. Best of your luck and find me anytime"
+            + " when you need help.";
 
     alert.getDialogPane().setContentText(alertContentText);
     alert.getDialogPane().setMinHeight(200);
@@ -97,7 +98,6 @@ public class RoomController {
 
   private void initializeImage() {
     perfume1.setImage(perfume1ChangedImage);
-    // perfume2.setImage(perfume2ChangedImage);
     perfume3.setImage(perfume3ChangedImage);
     perfume4.setImage(perfume4ChangedImage);
     perfume5.setImage(perfume5ChangedImage);
@@ -207,16 +207,6 @@ public class RoomController {
     perfume1.setImage(perfume1ChangedImage);
   }
 
-  // @FXML
-  // private void perfume2MouseEntered() {
-  //   perfume2.setImage(perfume2Image);
-  // }
-
-  // @FXML
-  // private void perfume2MouseExited() {
-  //   perfume2.setImage(perfume2ChangedImage);
-  // }
-
   @FXML
   private void perfume3MouseEntered() {
     perfume3.setImage(perfume3Image);
@@ -318,7 +308,7 @@ public class RoomController {
   }
 
   @FXML
-  public void clickHintButton(ActionEvent event) throws IOException {
+  private void handleHintButtonClick(ActionEvent event) throws IOException {
     Task<Void> task =
         new Task<>() {
           @Override

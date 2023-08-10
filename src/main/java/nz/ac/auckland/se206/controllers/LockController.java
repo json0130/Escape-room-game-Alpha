@@ -19,12 +19,12 @@ public class LockController {
 
   @FXML
   public void initialize() {
-    checkAnswerLabel.setText("Answer Check: " + checkAnswer + " seconds");
     // Initialization code goes here
+    checkAnswerLabel.setText("Answer Check: " + checkAnswer + " seconds");
   }
 
   @FXML
-  public void switchToRoom() throws IOException {
+  protected void switchToRoom() throws IOException {
     if (!GameState.isGameFinished) {
       System.out.println("Switching to room");
       App.setScene(AppUi.ROOM);

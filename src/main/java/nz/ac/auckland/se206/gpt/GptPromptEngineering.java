@@ -22,23 +22,19 @@ public class GptPromptEngineering {
   }
 
   public static String getHintWithGivenWord() {
+    // Construct the full ChatGPT prompt for giving users hints
     String prompt;
     if (GameState.isGameStarted) {
       prompt =
-          "You're just getting started. Look around the room carefully for any clues or items that"
-              + " might help you progress.";
+          "You're just getting started. Try look around the room and see if you can find anything"
+              + " useful. By the way you have to find the 5 perfumes around the room to go to next"
+              + " round";
     } else if (GameState.isPerfumeColledted) {
-      prompt =
-          "You've collected a perfume. Try using it in different parts of the room to see if it"
-              + " triggers any hidden mechanisms.";
+      prompt = "You've collected a perfume. Try find the letter in the room";
     } else if (GameState.isLetterFound) {
-      prompt =
-          "You found a letter, great job! Now, think about where this letter might be useful. Look"
-              + " for clues related to the letter's content.";
+      prompt = "You found a letter, great job! Now, try to solve the riddle.";
     } else if (GameState.isRiddleResolved) {
-      prompt =
-          "Congratulations on solving the riddle! Now, try to identify the image on the door lock"
-              + " that matches the riddle's theme.";
+      prompt = "Congratulations on solving the riddle! Now, try to open the doorlock.";
     } else if (GameState.isDoorUnlocked) {
       prompt =
           "The door is unlocked! You're almost there. Think about what you've learned so far and"
@@ -56,6 +52,7 @@ public class GptPromptEngineering {
         + "AI: "
         + prompt
         + "\n"
-        + "Remember, I'm here to guide you, but I won't give away the answers!";
+        + "Remember, I'm here to guide you, but I won't give away the answers or directly giving"
+        + " what is the next step is!";
   }
 }
