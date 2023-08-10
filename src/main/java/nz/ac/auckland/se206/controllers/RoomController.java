@@ -68,15 +68,6 @@ public class RoomController {
 
   /** Initializes the room view, it is called when the room loads. */
   public void initialize() {
-
-    Alert alert = new Alert(AlertType.INFORMATION);
-    alert.setTitle("Welcome!");
-    alert.setHeaderText("SE206 Perfume Shop");
-    alert.setContentText(
-        "When I opened my eyes, I was locked in the storage room and needed to escape as soon"
-            + "\n as possible, and I don't have enough time !!!");
-    alert.showAndWait();
-
     TextInputDialog dialog = new TextInputDialog();
     dialog.setTitle("Welcome!");
     dialog.setHeaderText("Welcome to the SE206 perfume shop. Please enter your name:");
@@ -85,6 +76,17 @@ public class RoomController {
     GameState.playerName = playerName; // Store the user's name
 
     setPlayerNameLabel();
+
+    Alert alert = new Alert(AlertType.INFORMATION);
+    alert.setTitle("Welcome!");
+    alert.setHeaderText("SE206 Perfume Shop");
+    alert.setContentText(
+        "Welcome to SE206 Perfume shop Escape room!"
+            + "\n You are locked in the storage room of a perfume shop and needed to escape as soon"
+            + "\n as possible, and you only have 100 seconds to escape the room."
+            + "\n Best of your luck and find me anytime when you need help.");
+    alert.showAndWait();
+
     timeline = new Timeline(new KeyFrame(Duration.seconds(1), this::updateTimer));
     timeline.setCycleCount(Timeline.INDEFINITE);
     timeline.play();
@@ -107,7 +109,7 @@ public class RoomController {
           @Override
           protected Void call() {
             String playerName = GameState.playerName;
-            Platform.runLater(() -> playerNameLabel.setText("Welcome, " + playerName));
+            Platform.runLater(() -> playerNameLabel.setText("Welcome, " + playerName + " !"));
             return null;
           }
         };

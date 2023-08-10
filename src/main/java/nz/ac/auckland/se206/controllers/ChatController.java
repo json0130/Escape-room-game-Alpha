@@ -39,8 +39,8 @@ public class ChatController {
             chatCompletionRequest =
                 new ChatCompletionRequest()
                     .setN(1)
-                    .setTemperature(0.5)
-                    .setTopP(0.8)
+                    .setTemperature(0.4)
+                    .setTopP(0.7)
                     .setMaxTokens(100);
             runGpt(new ChatMessage("user", GptPromptEngineering.getRiddleWithGivenWord("candle")));
             return null;

@@ -4,6 +4,7 @@ import java.io.IOException;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.GameState;
 import nz.ac.auckland.se206.SceneManager.AppUi;
@@ -11,6 +12,10 @@ import nz.ac.auckland.se206.SceneManager.AppUi;
 public class LockController {
 
   @FXML private Button exitbutton;
+
+  @FXML private Label checkAnswerLabel;
+
+  private int checkAnswer = 3;
 
   @FXML
   public void initialize() {
@@ -28,10 +33,14 @@ public class LockController {
   @FXML
   public void wrongAnswer() throws IOException {
     if (!GameState.isGameFinished) {
+      checkAnswer--;
+      checkAnswerLabel.setText("Answer Check: " + checkAnswer + " seconds");
+      if (checkAnswer == 0) {
+        showDialog("Info", "Lose", "You used all of your chance to guess the answer!");
+      }
       System.out.println("Wrong answer");
       showDialog("Info", "Alert", "Wrong Answer!");
     }
-    
   }
 
   @FXML
