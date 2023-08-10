@@ -31,6 +31,7 @@ public class LockController {
       System.out.println("Wrong answer");
       showDialog("Info", "Alert", "Wrong Answer!");
     }
+    
   }
 
   @FXML

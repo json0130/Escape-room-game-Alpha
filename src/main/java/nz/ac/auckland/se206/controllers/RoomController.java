@@ -30,7 +30,6 @@ import nz.ac.auckland.se206.speech.TextToSpeech;
 public class RoomController {
 
   @FXML private Rectangle door;
-  @FXML private Rectangle perfume;
   @FXML private Rectangle doorLock;
   @FXML private ImageView letter;
   @FXML private Label timerLabel;
@@ -38,7 +37,21 @@ public class RoomController {
   @FXML private ProgressBar progressBar;
   @FXML private Label playerNameLabel;
   @FXML private Button hintButton;
-  @FXML private ImageView perfumeImage;
+
+  /*private Image perfume7 = new Image("/image/perfume 7.jpeg");
+  private Image perfume6 = new Image("/image/perfume 6.jpeg");
+  private Image perfume5 = new Image("/image/perfume5.jpg");
+  private Image perfume4 = new Image("/image/perfume4.jpg");
+  private Image perfume3 = new Image("/image/perfume3.jpeg");
+
+  @FXML private ImageView perfumeImage = new ImageView(perfume7);
+  @FXML private ImageView perfumeImage1 = new ImageView(perfume6);
+  @FXML private ImageView perfumeImage2 = new ImageView(perfume5);
+  @FXML private ImageView perfumeImage3 = new ImageView(perfume4);
+  @FXML private ImageView perfumeImage4 = new ImageView(perfume3);
+  // @FXML private ImageView perfumeImage5 = new ImageView(perfume2);
+  // @FXML private ImageView perfumeImage6 = new ImageView(perfume1);
+  */
 
   private int counter = 0;
   private int seconds = 100;
@@ -155,19 +168,12 @@ public class RoomController {
     if (counter == 5) {
       counter = 5;
       // toggleVisibility1();
+      // perfumeImage.setOpacity(0);
       GameState.isPerfumeColledted = true;
       letter.setVisible(true);
       showDialog("Info", "Perfume Collected", "You collected all of the Perfume!");
-      // Debug print statements
-      System.out.println("Counter reached 5. Making perfumeImage invisible.");
-      System.out.println("perfumeImage.isVisible(): " + perfumeImage.isVisible());
 
       // Make the perfumeImage ImageView disappear
-      perfumeImage.setVisible(false);
-
-      // Debug print statement
-      System.out.println(
-          "perfumeImage.isVisible() after setting to false: " + perfumeImage.isVisible());
     }
 
     // if (GameState.isRiddleResolved && !GameState.isKeyFound) {
@@ -193,6 +199,8 @@ public class RoomController {
   public void clickdoor(MouseEvent event) throws IOException {
     if (!GameState.isRiddleResolved || !GameState.isPerfumeColledted) {
       showDialog("Info", "Door Locked", "You need to collect all of the Perfume!");
+    } else if (!GameState.isRiddleResolved && GameState.isPerfumeColledted) {
+      showDialog("Info", "Door Locked", "You need to solve the riddle!");
     } else {
       System.out.println("door is clicked");
       GameState.isDoorUnlocked = true;
@@ -216,7 +224,7 @@ public class RoomController {
             // Run GPT and get the response
             String gptResponse =
                 GptPromptEngineering.getRiddleWithGivenWord(
-                    "rose"); // Call a method to run GPT and get the response
+                    "candle"); // Call a method to run GPT and get the response
 
             // Find the first sentence in the response
             int periodIndex = gptResponse.indexOf('.');

@@ -64,13 +64,13 @@
          </image>
       </ImageView>
       <Rectangle fx:id="juice" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="89.0" layoutX="56.0" layoutY="40.0" onMouseClicked="#wrongAnswer" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="100.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="89.0" layoutX="185.0" layoutY="40.0" onMouseClicked="#wrongAnswer" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="100.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="89.0" layoutX="185.0" layoutY="40.0" onMouseClicked="#correctAnswer" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="100.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="89.0" layoutX="314.0" layoutY="40.0" onMouseClicked="#wrongAnswer" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="100.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="89.0" layoutX="56.0" layoutY="153.0" onMouseClicked="#wrongAnswer" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="100.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="89.0" layoutX="185.0" layoutY="153.0" onMouseClicked="#wrongAnswer" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="100.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="89.0" layoutX="314.0" layoutY="153.0" onMouseClicked="#wrongAnswer" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="100.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="89.0" layoutX="56.0" layoutY="269.0" onMouseClicked="#wrongAnswer" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="100.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="89.0" layoutX="185.0" layoutY="269.0" onMouseClicked="#wrongAnswer" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="100.0" />
-      <Rectangle fx:id="rose" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="89.0" layoutX="314.0" layoutY="269.0" onMouseClicked="#correctAnswer" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="100.0" />
+      <Rectangle fx:id="rose" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="89.0" layoutX="314.0" layoutY="269.0" onMouseClicked="#wrongAnswer" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="100.0" />
    </children>
 </Pane>

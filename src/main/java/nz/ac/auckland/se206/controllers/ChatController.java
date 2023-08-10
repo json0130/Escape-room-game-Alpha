@@ -40,10 +40,10 @@ public class ChatController {
             chatCompletionRequest =
                 new ChatCompletionRequest()
                     .setN(1)
-                    .setTemperature(0.2)
-                    .setTopP(0.5)
+                    .setTemperature(0.5)
+                    .setTopP(0.8)
                     .setMaxTokens(100);
-            runGpt(new ChatMessage("user", GptPromptEngineering.getRiddleWithGivenWord("rose")));
+            runGpt(new ChatMessage("user", GptPromptEngineering.getRiddleWithGivenWord("candle")));
             return null;
           }
         };
