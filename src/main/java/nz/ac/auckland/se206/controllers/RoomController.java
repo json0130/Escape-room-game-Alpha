@@ -14,6 +14,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TextInputDialog;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
@@ -38,12 +39,7 @@ public class RoomController {
   @FXML private Label playerNameLabel;
   @FXML private Button hintButton;
 
-  /*private Image perfume7 = new Image("/image/perfume 7.jpeg");
-  private Image perfume6 = new Image("/image/perfume 6.jpeg");
-  private Image perfume5 = new Image("/image/perfume5.jpg");
-  private Image perfume4 = new Image("/image/perfume4.jpg");
-  private Image perfume3 = new Image("/image/perfume3.jpeg");
-
+  /*
   @FXML private ImageView perfumeImage = new ImageView(perfume7);
   @FXML private ImageView perfumeImage1 = new ImageView(perfume6);
   @FXML private ImageView perfumeImage2 = new ImageView(perfume5);
