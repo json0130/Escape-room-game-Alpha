@@ -19,6 +19,7 @@ public class LockController {
 
   @FXML
   public void initialize() {
+    checkAnswerLabel.setText("Answer Check: " + checkAnswer + " seconds");
     // Initialization code goes here
   }
 
@@ -37,9 +38,13 @@ public class LockController {
       checkAnswerLabel.setText("Answer Check: " + checkAnswer + " seconds");
       if (checkAnswer == 0) {
         showDialog("Info", "Lose", "You used all of your chance to guess the answer!");
+      } else if (checkAnswer == 1) {
+        showDialog("Info", "Alert", "Wrong Answer! This is your last chance to guess the answer!");
+      } else {
+        System.out.println("Wrong answer");
+        showDialog("Info", "Alert", "Wrong Answer!");
+        GameState.isGameFinished = true;
       }
-      System.out.println("Wrong answer");
-      showDialog("Info", "Alert", "Wrong Answer!");
     }
   }
 

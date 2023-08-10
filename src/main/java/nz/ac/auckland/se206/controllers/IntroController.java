@@ -12,7 +12,6 @@ public class IntroController {
 
   @FXML
   public void initialize() {
-    // runNameInputDialog();
     TextInputDialog dialog = new TextInputDialog();
     dialog.setTitle("Welcome!");
     dialog.setHeaderText("Welcome to the SE206 perfume shop. Please enter your name:");
@@ -20,29 +19,6 @@ public class IntroController {
     String playerName = result.orElse("");
     GameState.playerName = playerName; // Store the user's name
   }
-
-  // private void runNameInputDialog() {
-  //   Task<String> nameInputTask =
-  //       new Task<>() {
-  //         @Override
-  //         protected String call() {
-  //           TextInputDialog dialog = new TextInputDialog();
-  //           dialog.setTitle("Welcome!");
-  //           dialog.setHeaderText("Welcome to the SE206 perfume shop. Please enter your name:");
-  //           Optional<String> result = dialog.showAndWait();
-  //           return result.orElse("");
-  //         }
-  //       };
-
-  //   nameInputTask.setOnSucceeded(
-  //       event -> {
-  //         String playerName = nameInputTask.getValue();
-  //         GameState.playerName = playerName; // Store the user's name
-  //       });
-
-  //   Thread nameInputDialogThread = new Thread(nameInputTask);
-  //   nameInputDialogThread.start();
-  // }
 
   @FXML
   public void gameStart() throws IOException {

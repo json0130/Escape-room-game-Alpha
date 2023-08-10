@@ -40,15 +40,12 @@ public class RoomController {
   @FXML private ImageView perfume1;
   Image perfume1Image = new Image(getClass().getResourceAsStream("/images/P1.png"));
   Image perfume1ChangedImage = new Image(getClass().getResourceAsStream("/images/B5.png"));
-  // @FXML private ImageView perfume2;
-  // Image perfume2Image = new Image(getClass().getResourceAsStream("/images/P2.png"));
-  // Image perfume2ChangedImage = new Image(getClass().getResourceAsStream("/images/B3.png"));
   @FXML private ImageView perfume3;
   Image perfume3Image = new Image(getClass().getResourceAsStream("/images/P3.png"));
   Image perfume3ChangedImage = new Image(getClass().getResourceAsStream("/images/B2.png"));
   @FXML private ImageView perfume4;
   Image perfume4Image = new Image(getClass().getResourceAsStream("/images/P4.png"));
-  Image perfume4ChangedImage = new Image(getClass().getResourceAsStream("/images/B4.png"));
+  Image perfume4ChangedImage = new Image(getClass().getResourceAsStream("/images/B7.png"));
   @FXML private ImageView perfume5;
   Image perfume5Image = new Image(getClass().getResourceAsStream("/images/P5.png"));
   Image perfume5ChangedImage = new Image(getClass().getResourceAsStream("/images/B1.png"));
@@ -57,7 +54,7 @@ public class RoomController {
   Image perfume6ChangedImage = new Image(getClass().getResourceAsStream("/images/B6.png"));
   @FXML private ImageView perfume7;
   Image perfume7Image = new Image(getClass().getResourceAsStream("/images/P2.png"));
-  Image perfume7ChangedImage = new Image(getClass().getResourceAsStream("/images/B7.png"));
+  Image perfume7ChangedImage = new Image(getClass().getResourceAsStream("/images/B4.png"));
 
   private int counter = 0;
   private int seconds = 100;
@@ -80,11 +77,16 @@ public class RoomController {
     Alert alert = new Alert(AlertType.INFORMATION);
     alert.setTitle("Welcome!");
     alert.setHeaderText("SE206 Perfume Shop");
-    alert.setContentText(
+    String alertContentText =
         "Welcome to SE206 Perfume shop Escape room!"
             + "\n You are locked in the storage room of a perfume shop and needed to escape as soon"
             + "\n as possible, and you only have 100 seconds to escape the room."
-            + "\n Best of your luck and find me anytime when you need help.");
+            + "\n Best of your luck and find me anytime when you need help.";
+
+    alert.getDialogPane().setContentText(alertContentText);
+    alert.getDialogPane().setMinHeight(200);
+    alert.getDialogPane().setMinWidth(400);
+
     alert.showAndWait();
 
     timeline = new Timeline(new KeyFrame(Duration.seconds(1), this::updateTimer));
