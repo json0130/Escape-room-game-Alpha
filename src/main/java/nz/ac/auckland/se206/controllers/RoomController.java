@@ -9,16 +9,14 @@ import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
-import javafx.scene.control.TextField;
 import javafx.scene.control.TextInputDialog;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.GridPane;
 import javafx.scene.shape.Rectangle;
 import javafx.util.Duration;
 import nz.ac.auckland.se206.App;
@@ -39,15 +37,26 @@ public class RoomController {
   @FXML private Label playerNameLabel;
   @FXML private Button hintButton;
 
+  @FXML private ImageView perfume1;
+  @FXML private ImageView perfume2;
+  @FXML private ImageView perfume3;
+  @FXML private ImageView perfume4;
+  @FXML private ImageView perfume5;
+  @FXML private ImageView perfume6;
+  @FXML private ImageView perfume7;
+
   /*
   @FXML private ImageView perfumeImage = new ImageView(perfume7);
   @FXML private ImageView perfumeImage1 = new ImageView(perfume6);
   @FXML private ImageView perfumeImage2 = new ImageView(perfume5);
   @FXML private ImageView perfumeImage3 = new ImageView(perfume4);
   @FXML private ImageView perfumeImage4 = new ImageView(perfume3);
-  // @FXML private ImageView perfumeImage5 = new ImageView(perfume2);
-  // @FXML private ImageView perfumeImage6 = new ImageView(perfume1);
+  @FXML private ImageView perfumeImage5 = new ImageView(perfume2);
+
   */
+
+  // private Image perfume1 = new Image("images/perfume1.png");
+  // @FXML private ImageView perfumeImage6 = new ImageView(perfume1);
 
   private int counter = 0;
   private int seconds = 100;
@@ -58,37 +67,42 @@ public class RoomController {
 
   /** Initializes the room view, it is called when the room loads. */
   public void initialize() {
+
+    Alert alert = new Alert(AlertType.INFORMATION);
+    alert.setTitle("Welcome!");
+    alert.setHeaderText("SE206 Perfume Shop");
+    alert.setContentText(
+        "When I opened my eyes, I was locked in the storage room and needed to escape as soon"
+            + "\n as possible, and I don't have enough time !!!");
+    alert.showAndWait();
+
     TextInputDialog dialog = new TextInputDialog();
     dialog.setTitle("Welcome!");
     dialog.setHeaderText("Welcome to the SE206 perfume shop. Please enter your name:");
-
-    GridPane grid = new GridPane();
-    grid.setHgap(10);
-    grid.setVgap(10);
-
-    TextField textField = new TextField();
-    textField.setPromptText("Enter your name");
-    grid.add(textField, 0, 0);
-
-    Label contentText =
-        new Label(
-            "When I opened my eyes, I was locked in the storage room and needed to escape as soon"
-                + "\n as possible, and I don't have enough time !!!");
-    grid.add(contentText, 0, 1);
-
-    dialog.getDialogPane().setContent(grid);
     Optional<String> result = dialog.showAndWait();
+    String playerName = result.orElse("");
+    GameState.playerName = playerName; // Store the user's name
 
-    result.ifPresent(
-        name -> {
-          GameState.playerName =
-              name; // Store the user's name in GameState (you need to define the GameState class)
-          playerNameLabel.setText("Welcome, " + name);
-        });
-
+    setPlayerNameLabel();
     timeline = new Timeline(new KeyFrame(Duration.seconds(1), this::updateTimer));
     timeline.setCycleCount(Timeline.INDEFINITE);
     timeline.play();
+
+    // Set mouse hover event handlers for perfumes
+    // perfume1.setOnMouseEntered(this::perfumeMouseEntered);
+    // perfume1.setOnMouseExited(this::perfumeMouseExited);
+    // perfume2.setOnMouseEntered(this::perfumeMouseEntered);
+    // perfume2.setOnMouseExited(this::perfumeMouseExited);
+    // perfume3.setOnMouseEntered(this::perfumeMouseEntered);
+    // perfume3.setOnMouseExited(this::perfumeMouseExited);
+    // perfume4.setOnMouseEntered(this::perfumeMouseEntered);
+    // perfume4.setOnMouseExited(this::perfumeMouseExited);
+    // perfume5.setOnMouseEntered(this::perfumeMouseEntered);
+    // perfume5.setOnMouseExited(this::perfumeMouseExited);
+    // perfume6.setOnMouseEntered(this::perfumeMouseEntered);
+    // perfume6.setOnMouseExited(this::perfumeMouseExited);
+    // perfume7.setOnMouseEntered(this::perfumeMouseEntered);
+    // perfume7.setOnMouseExited(this::perfumeMouseExited);
   }
 
   private void setPlayerNameLabel() {
@@ -107,13 +121,15 @@ public class RoomController {
   }
 
   private void updateTimer(ActionEvent event) {
-    seconds--;
-    timerLabel.setText("Time: " + seconds + " seconds");
-    if (seconds == 0) {
-      timeline.stop();
-      showDialog("Info", "Time Out", "You ran out of time!");
-    } else if (seconds == 30) {
-      showDialog("Info", "30 seconds Left", "You only got 30 seconds to escape the room!");
+    if (!GameState.isGameFinished) {
+      seconds--;
+      timerLabel.setText("Time: " + seconds + " seconds");
+      if (seconds == 0) {
+        timeline.stop();
+        showDialog("Info", "Time Out", "You ran out of time!");
+      } else if (seconds == 30) {
+        showDialog("Info", "30 seconds Left", "You only got 30 seconds to escape the room!");
+      }
     }
   }
 
@@ -164,11 +180,11 @@ public class RoomController {
     if (counter == 5) {
       counter = 5;
       // toggleVisibility1();
-      // perfumeImage.setOpacity(0);
+      // perfume1.setOpacity(0);
       GameState.isPerfumeColledted = true;
       letter.setVisible(true);
       showDialog("Info", "Perfume Collected", "You collected all of the Perfume!");
-
+      perfume1.setVisible(false);
       // Make the perfumeImage ImageView disappear
     }
 
@@ -178,11 +194,29 @@ public class RoomController {
     // }
   }
 
+  /**
+   * Handles the click event on the perfume.
+   *
+   * @param event the mouse event
+   */
+  @FXML
   private void perfumeClicked() {
     System.out.println("Perfume clicked");
     counter++;
     progressBar.setProgress(progressSize += 0.2);
     System.out.println("counter: " + counter);
+  }
+
+  @FXML
+  private void perfumeMouseEntered(MouseEvent event) {
+    // ImageView perfume = (ImageView) event.getSource();
+    perfume1.setVisible(true);
+  }
+
+  @FXML
+  private void perfumeMouseExited(MouseEvent event) {
+    // ImageView perfume = (ImageView) event.getSource();
+    perfume1.setVisible(false);
   }
 
   /**
@@ -195,7 +229,7 @@ public class RoomController {
   public void clickdoor(MouseEvent event) throws IOException {
     if (!GameState.isRiddleResolved || !GameState.isPerfumeColledted) {
       showDialog("Info", "Door Locked", "You need to collect all of the Perfume!");
-    } else if (!GameState.isRiddleResolved && GameState.isPerfumeColledted) {
+    } else if (!GameState.isRiddleResolved) {
       showDialog("Info", "Door Locked", "You need to solve the riddle!");
     } else {
       System.out.println("door is clicked");

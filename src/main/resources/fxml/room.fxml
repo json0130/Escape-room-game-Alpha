@@ -21,37 +21,37 @@
             <Image url="@../images/doorlock.jpeg" />
          </image>
       </ImageView>
-      <ImageView fx:id="perfumeImage1" fitHeight="60.0" fitWidth="60.0" layoutX="144.0" layoutY="101.0" onMouseClicked="#clickPerfume" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="perfumeImage1" fitHeight="60.0" fitWidth="60.0" layoutX="144.0" layoutY="101.0" onMouseClicked="#clickPerfume" onMouseEntered="#perfumeMouseEntered" onMouseExited="#perfumeMouseExited" pickOnBounds="true" preserveRatio="true" visible="false">
          <image>
             <Image url="@../images/perfume%206.jpeg" />
          </image>
       </ImageView>
-      <ImageView fx:id="perfumeImage5" fitHeight="56.0" fitWidth="56.0" layoutX="144.0" layoutY="274.0" onMouseClicked="#clickPerfume" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="perfumeImage5" fitHeight="56.0" fitWidth="56.0" layoutX="144.0" layoutY="274.0" onMouseClicked="#clickPerfume" onMouseEntered="#perfumeMouseEntered" onMouseExited="#perfumeMouseExited" pickOnBounds="true" preserveRatio="true" visible="false">
          <image>
             <Image url="@../images/perfume2.jpeg" />
          </image>
       </ImageView>
-      <ImageView fx:id="perfumeImage" fitHeight="83.0" fitWidth="79.0" layoutX="30.0" layoutY="186.0" onMouseClicked="#clickPerfume" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="perfumeImage" fitHeight="83.0" fitWidth="79.0" layoutX="30.0" layoutY="186.0" onMouseClicked="#clickPerfume" onMouseEntered="#perfumeMouseEntered" onMouseExited="#perfumeMouseExited" pickOnBounds="true" preserveRatio="true" visible="false">
          <image>
             <Image url="@../images/perfume%207.jpeg" />
          </image>
       </ImageView>
-      <ImageView fx:id="perfumeImage2" fitHeight="48.0" fitWidth="56.0" layoutX="464.0" layoutY="201.0" onMouseClicked="#clickPerfume" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="perfumeImage2" fitHeight="48.0" fitWidth="56.0" layoutX="464.0" layoutY="201.0" onMouseClicked="#clickPerfume" onMouseEntered="#perfumeMouseEntered" onMouseExited="#perfumeMouseExited" pickOnBounds="true" preserveRatio="true" visible="false">
          <image>
             <Image url="@../images/perfume5.jpg" />
          </image>
       </ImageView>
-      <ImageView fx:id="perfumeImage6" fitHeight="41.0" fitWidth="40.0" layoutX="422.0" layoutY="350.0" onMouseClicked="#clickPerfume" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="perfumeImage6" fitHeight="41.0" fitWidth="40.0" layoutX="422.0" layoutY="350.0" onMouseClicked="#clickPerfume" onMouseEntered="#perfumeMouseEntered" onMouseExited="#perfumeMouseExited" pickOnBounds="true" preserveRatio="true" visible="false">
          <image>
             <Image url="@../images/perfume1.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="perfumeImage4" fitHeight="56.0" fitWidth="31.0" layoutX="456.0" layoutY="80.0" onMouseClicked="#clickPerfume" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="perfumeImage4" fitHeight="56.0" fitWidth="31.0" layoutX="456.0" layoutY="80.0" onMouseClicked="#clickPerfume" onMouseEntered="#perfumeMouseEntered" onMouseExited="#perfumeMouseExited" pickOnBounds="true" preserveRatio="true" visible="false">
          <image>
             <Image url="@../images/perfume3.jpeg" />
          </image>
       </ImageView>
-      <ImageView fx:id="perfumeImage3" fitHeight="60.0" fitWidth="60.0" layoutX="39.0" layoutY="340.0" onMouseClicked="#clickPerfume" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="perfumeImage3" fitHeight="60.0" fitWidth="60.0" layoutX="39.0" layoutY="340.0" onMouseClicked="#clickPerfume" onMouseEntered="#perfumeMouseEntered" onMouseExited="#perfumeMouseExited" pickOnBounds="true" preserveRatio="true" visible="false">
          <image>
             <Image url="@../images/perfume4.jpg" />
          </image>

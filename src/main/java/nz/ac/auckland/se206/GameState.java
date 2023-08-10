@@ -10,7 +10,7 @@ public class GameState {
 
   public static boolean isLetterFound = false;
 
-  public static String playerName = ""; // Store the user's name here
+  public static String playerName; // Store the user's name here
 
   public static boolean isHintClicked = false;
 

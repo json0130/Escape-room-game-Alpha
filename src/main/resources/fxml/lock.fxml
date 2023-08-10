@@ -18,59 +18,50 @@
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="89.0" layoutX="184.0" layoutY="270.0" stroke="BLACK" strokeType="INSIDE" width="100.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="89.0" layoutX="313.0" layoutY="270.0" stroke="BLACK" strokeType="INSIDE" width="100.0" />
       <Button fx:id="exit" layoutX="429.0" layoutY="359.0" mnemonicParsing="false" onAction="#switchToRoom" prefHeight="25.0" prefWidth="26.0" text="X" />
-      <ImageView fitHeight="79.0" fitWidth="79.0" layoutX="66.0" layoutY="46.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="ball" fitHeight="79.0" fitWidth="79.0" layoutX="66.0" layoutY="46.0" onMouseClicked="#wrongAnswer" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/1f379.png" />
+            <Image url="@../images/ball.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="89.0" fitWidth="79.0" layoutX="324.0" layoutY="159.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="teddyBear" fitHeight="89.0" fitWidth="79.0" layoutX="324.0" layoutY="159.0" onMouseClicked="#wrongAnswer" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/png-transparent-tree-leaf-deciduous-evergreen-emoji-poodle-leaf-grass-sticker-thumbnail.png" />
+            <Image url="@../images/bear.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="79.0" fitWidth="79.0" layoutX="323.0" layoutY="275.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="bell" fitHeight="79.0" fitWidth="79.0" layoutX="323.0" layoutY="275.0" onMouseClicked="#wrongAnswer" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/istockphoto-1365025510-612x612.jpg" />
+            <Image url="@../images/bell.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="79.0" fitWidth="79.0" layoutX="195.0" layoutY="46.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="candle" fitHeight="79.0" fitWidth="79.0" layoutX="195.0" layoutY="46.0" onMouseClicked="#correctAnswer" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/1f56f.png" />
+            <Image url="@../images/candle.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="79.0" fitWidth="79.0" layoutX="324.0" layoutY="46.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="grape" fitHeight="79.0" fitWidth="79.0" layoutX="324.0" layoutY="46.0" onMouseClicked="#wrongAnswer" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/26bd.png" />
+            <Image url="@../images/grape.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="79.0" fitWidth="79.0" layoutX="66.0" layoutY="159.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="juice" fitHeight="79.0" fitWidth="79.0" layoutX="66.0" layoutY="159.0" onMouseClicked="#wrongAnswer" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/Grapes_Emoji.png" />
+            <Image url="@../images/juice.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="79.0" fitWidth="79.0" layoutX="195.0" layoutY="159.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="tree" fitHeight="79.0" fitWidth="79.0" layoutX="195.0" layoutY="159.0" onMouseClicked="#wrongAnswer" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/teddy-bear_1f9f8.png" />
+            <Image url="@../images/tree.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="79.0" fitWidth="79.0" layoutX="194.0" layoutY="275.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="rose" fitHeight="79.0" fitWidth="79.0" layoutX="194.0" layoutY="275.0" onMouseClicked="#wrongAnswer" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/1f514.png" />
+            <Image url="@../images/rose.jpg" />
          </image>
       </ImageView>
-      <ImageView fitHeight="79.0" fitWidth="79.0" layoutX="66.0" layoutY="275.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="perfume" fitHeight="79.0" fitWidth="79.0" layoutX="66.0" layoutY="275.0" onMouseClicked="#wrongAnswer" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/다운로드%20(1).jpeg" />
+            <Image url="@../images/perfume1.png" />
          </image>
       </ImageView>
-      <Rectangle fx:id="juice" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="89.0" layoutX="56.0" layoutY="40.0" onMouseClicked="#wrongAnswer" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="100.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="89.0" layoutX="185.0" layoutY="40.0" onMouseClicked="#correctAnswer" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="100.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="89.0" layoutX="314.0" layoutY="40.0" onMouseClicked="#wrongAnswer" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="100.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="89.0" layoutX="56.0" layoutY="153.0" onMouseClicked="#wrongAnswer" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="100.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="89.0" layoutX="185.0" layoutY="153.0" onMouseClicked="#wrongAnswer" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="100.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="89.0" layoutX="314.0" layoutY="153.0" onMouseClicked="#wrongAnswer" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="100.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="89.0" layoutX="56.0" layoutY="269.0" onMouseClicked="#wrongAnswer" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="100.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="89.0" layoutX="185.0" layoutY="269.0" onMouseClicked="#wrongAnswer" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="100.0" />
-      <Rectangle fx:id="rose" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="89.0" layoutX="314.0" layoutY="269.0" onMouseClicked="#wrongAnswer" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="100.0" />
    </children>
 </Pane>
