@@ -5,17 +5,12 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.image.ImageView;
 import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.GameState;
 import nz.ac.auckland.se206.SceneManager.AppUi;
 
 public class LockController {
 
-  @FXML private ImageView redPaper;
-  @FXML private ImageView bluePaper;
-  @FXML private ImageView greenPaper;
-  @FXML private ImageView yellowPaper;
   @FXML private Button exitbutton;
   @FXML private Label checkAnswerLabel;
 
@@ -28,7 +23,7 @@ public class LockController {
   }
 
   @FXML
-  protected void switchToRoom() throws IOException {
+  protected void handleSwitchToRoom() throws IOException {
     if (!GameState.isGameFinished) {
       System.out.println("Switching to room");
       App.setScene(AppUi.ROOM);

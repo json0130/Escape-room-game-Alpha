@@ -103,11 +103,11 @@ public class ChatController {
         new Task<Void>() {
           @Override
           protected Void call() throws Exception {
-            ChatMessage lastMSg = runGpt(msg);
+            ChatMessage lastMessage = runGpt(msg);
             Platform.runLater(
                 () -> {
-                  if (lastMSg.getRole().equals("assistant")
-                      && lastMSg.getContent().startsWith("Correct")) {
+                  if (lastMessage.getRole().equals("assistant")
+                      && lastMessage.getContent().startsWith("Correct")) {
                     GameState.isRiddleResolved = true;
                   }
                 });

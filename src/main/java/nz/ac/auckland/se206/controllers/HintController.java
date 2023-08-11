@@ -91,6 +91,7 @@ public class HintController {
    */
   @FXML
   private void onSendMessage(ActionEvent event) throws ApiProxyException, IOException {
+    // This mehtod is called when the user clicks the send button in the hint chat.
     String message = inputText.getText();
     if (message.trim().isEmpty()) {
       return;
@@ -103,11 +104,11 @@ public class HintController {
         new Task<Void>() {
           @Override
           protected Void call() throws Exception {
-            ChatMessage lastMSg = runGpt(msg);
+            ChatMessage lastMessage = runGpt(msg);
             Platform.runLater(
                 () -> {
-                  if (lastMSg.getRole().equals("assistant")
-                      && lastMSg.getContent().startsWith("Correct")) {
+                  if (lastMessage.getRole().equals("assistant")
+                      && lastMessage.getContent().startsWith("Correct")) {
                     GameState.isRiddleResolved = true;
                   }
                 });
