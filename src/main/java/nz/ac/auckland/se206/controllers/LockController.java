@@ -27,7 +27,7 @@ public class LockController {
   }
 
   @FXML
-  protected void handleSwitchToRoom() throws IOException {
+  protected void onClickSwitchToRoom() throws IOException {
     if (!GameState.isGameFinished) {
       System.out.println("Switching to room");
       App.setScene(AppUi.ROOM);
@@ -35,7 +35,7 @@ public class LockController {
   }
 
   @FXML
-  public void wrongAnswer() throws IOException {
+  private void wrongAnswer() throws IOException {
     if (!GameState.isGameFinished) {
       checkAnswer--;
       checkAnswerLabel.setText("Check Answer: " + checkAnswer + " attempts left");
@@ -52,10 +52,26 @@ public class LockController {
   }
 
   @FXML
-  public void correctAnswer() throws IOException {
+  private void correctAnswer() throws IOException {
+    finishTextToSpeech();
     System.out.println("Correct answer");
     showDialog("Info", "Congraturation!", "You have escaped the room!");
     GameState.isGameFinished = true;
+  }
+
+  private void finishTextToSpeech() {
+    Task<Void> introTask =
+        new Task<>() {
+
+          @Override
+          protected Void call() throws Exception {
+            TextToSpeech textToSpeech = new TextToSpeech();
+            textToSpeech.speak("Congraturation! You have escaped the room!");
+            return null;
+          }
+        };
+    Thread introThread = new Thread(introTask);
+    introThread.start();
   }
 
   /**
@@ -74,7 +90,7 @@ public class LockController {
   }
 
   @FXML
-  private void handleHintButtonClick(ActionEvent event) throws IOException {
+  private void onClickHintButton(ActionEvent event) throws IOException {
     Task<Void> task =
         new Task<>() {
           @Override

@@ -41,7 +41,7 @@ public class ChatController {
                 new ChatCompletionRequest()
                     .setN(1)
                     .setTemperature(0.4)
-                    .setTopP(0.7)
+                    .setTopP(0.8)
                     .setMaxTokens(100);
             runGpt(new ChatMessage("user", GptPromptEngineering.getRiddleWithGivenWord("Moon")));
             return null;

@@ -75,14 +75,17 @@ public class RoomController {
     alert.setTitle("Welcome!");
     alert.setHeaderText("Welcome to SE206 Perfume shop Escape room!");
     String alertContentText =
-        "You are locked in the storage room of a perfume shop and needed to escape as soon as"
-            + " possible.\n"
+        "You went to the perfume shop on the street and wanted to buy a perfume for your"
+            + " girlfriend.\n"
+            + "The owner asked you to try the perfume before you buy it. You tried the perfume"
+            + " and when you opened you're eyes. \nYou are locked in the storage room of a perfume"
+            + " shop and needed to escape as soon as possible.\n"
             + "\r"
-            + " You only have 100 seconds to escape the room. Best of your luck and find me"
-            + " anytimewhen you need help.";
+            + " You only have 100 seconds to escape the room. Best of your luck!!! and find me"
+            + " anytime when you need help.";
 
     alert.getDialogPane().setContentText(alertContentText);
-    alert.getDialogPane().setMinHeight(230);
+    alert.getDialogPane().setMinHeight(300);
     alert.getDialogPane().setMinWidth(400);
 
     alert.showAndWait();
@@ -90,6 +93,7 @@ public class RoomController {
     timeline = new Timeline(new KeyFrame(Duration.seconds(1), this::updateTimer));
     timeline.setCycleCount(Timeline.INDEFINITE);
     timeline.play();
+    introTextToSpeech();
 
     perfumeTimeline = new Timeline(new KeyFrame(Duration.seconds(1.5), this::toggleRandomPerfume));
     perfumeTimeline.setCycleCount(Timeline.INDEFINITE);
@@ -107,6 +111,21 @@ public class RoomController {
                 System.exit(0);
               });
         });
+  }
+
+  private void introTextToSpeech() {
+    Task<Void> introTask =
+        new Task<>() {
+
+          @Override
+          protected Void call() throws Exception {
+            TextToSpeech textToSpeech = new TextToSpeech();
+            textToSpeech.speak("Welcome to SE206 Perfume shop Escape room!");
+            return null;
+          }
+        };
+    Thread introThread = new Thread(introTask);
+    introThread.start();
   }
 
   private void stopBackgroundTasks() {
@@ -312,7 +331,7 @@ public class RoomController {
   }
 
   @FXML
-  private void handleHintButtonClick(ActionEvent event) throws IOException {
+  private void onClickHintButton(ActionEvent event) throws IOException {
     Task<Void> task =
         new Task<>() {
           @Override

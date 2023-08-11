@@ -92,6 +92,7 @@ public class HintController {
   @FXML
   private void onSendMessage(ActionEvent event) throws ApiProxyException, IOException {
     // This mehtod is called when the user clicks the send button in the hint chat.
+    // It sends the message to the GPT model and displays the response.
     String message = inputText.getText();
     if (message.trim().isEmpty()) {
       return;
