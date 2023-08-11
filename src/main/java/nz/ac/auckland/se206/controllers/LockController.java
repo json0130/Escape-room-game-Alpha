@@ -1,6 +1,9 @@
 package nz.ac.auckland.se206.controllers;
 
 import java.io.IOException;
+import javafx.application.Platform;
+import javafx.concurrent.Task;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
@@ -8,6 +11,7 @@ import javafx.scene.control.Label;
 import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.GameState;
 import nz.ac.auckland.se206.SceneManager.AppUi;
+import nz.ac.auckland.se206.speech.TextToSpeech;
 
 public class LockController {
 
@@ -67,5 +71,34 @@ public class LockController {
     alert.setHeaderText(headerText);
     alert.setContentText(message);
     alert.showAndWait();
+  }
+
+  @FXML
+  private void handleHintButtonClick(ActionEvent event) throws IOException {
+    Task<Void> task =
+        new Task<>() {
+          @Override
+          protected Void call() throws Exception {
+            // Change to the chat scene
+            Platform.runLater(
+                () -> {
+                  App.setScene(AppUi.HINT);
+                });
+
+            // Run GPT and get the response
+            String firstSentence = "How can I help you?, Please let me know if you need and help.";
+            // Text-to-speech the first sentence only if it hasn't been spoken before
+            if (!GameState.firstClickOccurred1) {
+              TextToSpeech textToSpeech = new TextToSpeech();
+              textToSpeech.speak(firstSentence);
+              GameState.firstClickOccurred1 = true;
+            }
+            return null;
+          }
+        };
+
+    // Execute the task in a new thread
+    Thread thread = new Thread(task);
+    thread.start();
   }
 }

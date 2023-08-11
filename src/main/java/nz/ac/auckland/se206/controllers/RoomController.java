@@ -57,7 +57,6 @@ public class RoomController {
   private Timeline timeline;
   private double progressSize = 0.0;
   private boolean firstClickOccurred = false;
-  private boolean firstClickOccurred1 = false;
   private Random random = new Random();
   private Timeline perfumeTimeline;
 
@@ -76,13 +75,14 @@ public class RoomController {
     alert.setTitle("Welcome!");
     alert.setHeaderText("Welcome to SE206 Perfume shop Escape room!");
     String alertContentText =
-        "You are locked in the storage room of a perfume shop and needed to escape as soon"
-            + " as possible.\n"
-            + "You only have 100 seconds to escape the room. Best of your luck and find me anytime"
-            + "when you need help.";
+        "You are locked in the storage room of a perfume shop and needed to escape as soon as"
+            + " possible.\n"
+            + "\r"
+            + " You only have 100 seconds to escape the room. Best of your luck and find me"
+            + " anytimewhen you need help.";
 
     alert.getDialogPane().setContentText(alertContentText);
-    alert.getDialogPane().setMinHeight(300);
+    alert.getDialogPane().setMinHeight(230);
     alert.getDialogPane().setMinWidth(400);
 
     alert.showAndWait();
@@ -325,10 +325,10 @@ public class RoomController {
             // Run GPT and get the response
             String firstSentence = "How can I help you?, Please let me know if you need and help.";
             // Text-to-speech the first sentence only if it hasn't been spoken before
-            if (!firstClickOccurred1) {
+            if (!GameState.firstClickOccurred1) {
               TextToSpeech textToSpeech = new TextToSpeech();
               textToSpeech.speak(firstSentence);
-              firstClickOccurred1 = true;
+              GameState.firstClickOccurred1 = true;
             }
 
             return null;

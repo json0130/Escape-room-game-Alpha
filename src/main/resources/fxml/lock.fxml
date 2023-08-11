@@ -19,7 +19,7 @@
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="89.0" layoutX="84.0" layoutY="241.0" stroke="BLACK" strokeType="INSIDE" width="100.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="89.0" layoutX="184.0" layoutY="241.0" stroke="BLACK" strokeType="INSIDE" width="100.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="89.0" layoutX="285.0" layoutY="241.0" stroke="BLACK" strokeType="INSIDE" width="100.0" />
-      <Button fx:id="exit" layoutX="429.0" layoutY="359.0" mnemonicParsing="false" onAction="#handleSwitchToRoom" prefHeight="25.0" prefWidth="26.0" text="X" />
+      <Button fx:id="exit" layoutX="428.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleSwitchToRoom" prefHeight="25.0" prefWidth="26.0" text="X" />
       <ImageView fx:id="ball" fitHeight="79.0" fitWidth="79.0" layoutX="94.0" layoutY="70.0" onMouseClicked="#wrongAnswer" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/ball.png" />
@@ -35,7 +35,7 @@
             <Image url="@../images/bell.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="candle" fitHeight="79.0" fitWidth="79.0" layoutX="194.0" layoutY="70.0" onMouseClicked="#correctAnswer" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="candle" fitHeight="79.0" fitWidth="79.0" layoutX="194.0" layoutY="70.0" onMouseClicked="#wrongAnswer" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/candle.png" />
          </image>
@@ -50,9 +50,9 @@
             <Image url="@../images/juice.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="tree" fitHeight="79.0" fitWidth="79.0" layoutX="195.0" layoutY="159.0" onMouseClicked="#wrongAnswer" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="moon" fitHeight="79.0" fitWidth="79.0" layoutX="95.0" layoutY="246.0" onMouseClicked="#correctAnswer" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/tree.png" />
+            <Image url="@../images/moon.png" />
          </image>
       </ImageView>
       <ImageView fx:id="rose" fitHeight="79.0" fitWidth="79.0" layoutX="194.0" layoutY="246.0" onMouseClicked="#wrongAnswer" pickOnBounds="true" preserveRatio="true">
@@ -60,12 +60,12 @@
             <Image url="@../images/rose.jpg" />
          </image>
       </ImageView>
-      <ImageView fx:id="perfume" fitHeight="79.0" fitWidth="79.0" layoutX="95.0" layoutY="246.0" onMouseClicked="#wrongAnswer" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="perfume" fitHeight="79.0" fitWidth="79.0" layoutX="194.0" layoutY="159.0" onMouseClicked="#wrongAnswer" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/perfume1.png" />
          </image>
       </ImageView>
-      <Label fx:id="checkAnswerLabel" layoutX="29.0" layoutY="353.0" prefHeight="17.0" prefWidth="234.0" text="Label">
+      <Label fx:id="checkAnswerLabel" layoutX="29.0" layoutY="353.0" prefHeight="31.0" prefWidth="301.0" text="Label">
          <font>
             <Font size="21.0" />
          </font></Label>
@@ -74,5 +74,6 @@
             <Font name="System Italic" size="19.0" />
          </font>
       </Label>
+      <Button fx:id="hintButton" layoutX="402.0" layoutY="369.0" mnemonicParsing="false" onAction="#handleHintButtonClick" text="HINT" />
    </children>
 </Pane>

@@ -43,7 +43,7 @@ public class ChatController {
                     .setTemperature(0.4)
                     .setTopP(0.7)
                     .setMaxTokens(100);
-            runGpt(new ChatMessage("user", GptPromptEngineering.getRiddleWithGivenWord("candle")));
+            runGpt(new ChatMessage("user", GptPromptEngineering.getRiddleWithGivenWord("Moon")));
             return null;
           }
         };
