@@ -218,7 +218,7 @@ public class RoomController {
    * @param event the mouse event
    */
   @FXML
-  public void clickPerfume(MouseEvent event) {
+  private void clickPerfume(MouseEvent event) {
     ImageView clickedPerfume = (ImageView) event.getTarget();
 
     perfumeClicked();
@@ -287,7 +287,7 @@ public class RoomController {
    * @throws IOException
    */
   @FXML
-  public void clickdoor(MouseEvent event) throws IOException {
+  private void clickdoor(MouseEvent event) throws IOException {
     if (!GameState.isRiddleResolved && !GameState.isPerfumeColledted) {
       showDialog("Info", "Door Locked", "You need to collect all of the Perfume!");
     } else if (!GameState.isRiddleResolved) {

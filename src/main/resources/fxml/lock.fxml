@@ -74,6 +74,6 @@
             <Font name="System Italic" size="19.0" />
          </font>
       </Label>
-      <Button fx:id="hintButton" layoutX="402.0" layoutY="369.0" mnemonicParsing="false" onAction="#onClickHintButton" text="HINT" />
+      <Button fx:id="hintButton" layoutX="381.0" layoutY="363.0" mnemonicParsing="false" onAction="#onClickHintButton" prefHeight="31.0" prefWidth="64.0" text="HINT" />
    </children>
 </Pane>
