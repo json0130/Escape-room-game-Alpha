@@ -76,16 +76,15 @@ public class RoomController {
 
     Alert alert = new Alert(AlertType.INFORMATION);
     alert.setTitle("Welcome!");
-    alert.setHeaderText("SE206 Perfume Shop");
+    alert.setHeaderText("Welcome to SE206 Perfume shop Escape room!");
     String alertContentText =
-        "Welcome to SE206 Perfume shop Escape room!\n"
-            + " You are locked in the storage room of a perfume shop and needed to escape as soon"
+        "You are locked in the storage room of a perfume shop and needed to escape as soon"
             + " as possible.\n"
-            + " You only have 100 seconds to escape the room. Best of your luck and find me anytime"
-            + " when you need help.";
+            + "You only have 100 seconds to escape the room. Best of your luck and find me anytime"
+            + "when you need help.";
 
     alert.getDialogPane().setContentText(alertContentText);
-    alert.getDialogPane().setMinHeight(200);
+    alert.getDialogPane().setMinHeight(300);
     alert.getDialogPane().setMinWidth(400);
 
     alert.showAndWait();

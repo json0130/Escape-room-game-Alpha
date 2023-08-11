@@ -35,7 +35,7 @@ public class LockController {
   public void wrongAnswer() throws IOException {
     if (!GameState.isGameFinished) {
       checkAnswer--;
-      checkAnswerLabel.setText("Answer Check: " + checkAnswer + " seconds");
+      checkAnswerLabel.setText("Check Answer: " + checkAnswer + " attempts left");
       if (checkAnswer == 0) {
         showDialog("Info", "Lose", "You used all of your chance to guess the answer!");
       } else if (checkAnswer == 1) {

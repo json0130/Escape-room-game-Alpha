@@ -53,6 +53,6 @@ public class GptPromptEngineering {
         + prompt
         + "\n"
         + "Remember, I'm here to guide you, but I won't give away the answers or directly giving"
-        + " what is the next step is!";
+        + " what is the next step is! and make sure keep your answers short and simple.";
   }
 }
