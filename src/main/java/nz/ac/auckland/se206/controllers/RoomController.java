@@ -2,6 +2,7 @@ package nz.ac.auckland.se206.controllers;
 
 import java.io.IOException;
 import java.util.Optional;
+import java.util.Random;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.application.Platform;
@@ -19,6 +20,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.shape.Rectangle;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.GameState;
@@ -62,6 +64,8 @@ public class RoomController {
   private double progressSize = 0.0;
   private boolean firstClickOccurred = false;
   private boolean firstClickOccurred1 = false;
+  private Random random = new Random();
+  private Timeline perfumeTimeline;
 
   /** Initializes the room view, it is called when the room loads. */
   public void initialize() {
@@ -92,16 +96,44 @@ public class RoomController {
     timeline = new Timeline(new KeyFrame(Duration.seconds(1), this::updateTimer));
     timeline.setCycleCount(Timeline.INDEFINITE);
     timeline.play();
+
+    perfumeTimeline = new Timeline(new KeyFrame(Duration.seconds(1.5), this::toggleRandomPerfume));
+    perfumeTimeline.setCycleCount(Timeline.INDEFINITE);
+    perfumeTimeline.play();
     initializeImage();
+
+    Platform.runLater(
+        () -> {
+          Stage stage = (Stage) timerLabel.getScene().getWindow();
+
+          stage.setOnCloseRequest(
+              event -> {
+                stopBackgroundTasks();
+                Platform.exit();
+                System.exit(0);
+              });
+        });
+  }
+
+  private void stopBackgroundTasks() {
+    if (timeline != null) {
+      timeline.stop();
+    }
   }
 
   private void initializeImage() {
-    perfume1.setImage(perfume1ChangedImage);
-    perfume3.setImage(perfume3ChangedImage);
-    perfume4.setImage(perfume4ChangedImage);
-    perfume5.setImage(perfume5ChangedImage);
-    perfume6.setImage(perfume6ChangedImage);
-    perfume7.setImage(perfume7ChangedImage);
+    perfume1.setImage(perfume1Image);
+    perfume1.setVisible(false);
+    perfume3.setImage(perfume3Image);
+    perfume3.setVisible(false);
+    perfume4.setImage(perfume4Image);
+    perfume4.setVisible(false);
+    perfume5.setImage(perfume5Image);
+    perfume5.setVisible(false);
+    perfume6.setImage(perfume6Image);
+    perfume6.setVisible(false);
+    perfume7.setImage(perfume7Image);
+    perfume7.setVisible(false);
   }
 
   private void setPlayerNameLabel() {
@@ -173,13 +205,65 @@ public class RoomController {
    * @param event the mouse event
    */
   @FXML
+  public void clickPerfume1(MouseEvent event) {
+    if (event.getTarget() instanceof ImageView && ((ImageView) event.getTarget()).isVisible()) {
+      perfumeClicked();
+      if (counter == 8) {
+        counter = 8;
+        GameState.isPerfumeColledted = true;
+        letterclicked.setVisible(true);
+        showDialog("Info", "Perfume Collected", "You collected all of the Perfume!");
+      }
+    }
+  }
+
+  @FXML
   public void clickPerfume(MouseEvent event) {
+    ImageView clickedPerfume = (ImageView) event.getTarget();
+
     perfumeClicked();
-    if (counter == 5) {
-      counter = 5;
+    clickedPerfume.setVisible(false);
+
+    if (counter == 8) {
+      perfumeTimeline.stop();
       GameState.isPerfumeColledted = true;
       letterclicked.setVisible(true);
       showDialog("Info", "Perfume Collected", "You collected all of the Perfume!");
+    }
+  }
+
+  private void toggleRandomPerfume(ActionEvent event) {
+    int randomPerfumeIndex = random.nextInt(6) + 1; // Generate a random perfume index (1 to 6)
+    ImageView randomPerfume = getPerfumeImageView(randomPerfumeIndex);
+
+    if (randomPerfume.isVisible()) {
+      randomPerfume.setVisible(false);
+    } else {
+      randomPerfume.setVisible(true);
+      randomPerfume.isDisable();
+      Timeline hidePerfumeTimeline =
+          new Timeline(new KeyFrame(Duration.seconds(1.0), e -> randomPerfume.setVisible(false)));
+      hidePerfumeTimeline.setCycleCount(1);
+      hidePerfumeTimeline.play();
+    }
+  }
+
+  private ImageView getPerfumeImageView(int index) {
+    switch (index) {
+      case 1:
+        return perfume1;
+      case 2:
+        return perfume3;
+      case 3:
+        return perfume4;
+      case 4:
+        return perfume5;
+      case 5:
+        return perfume6;
+      case 6:
+        return perfume7;
+      default:
+        return null;
     }
   }
 
@@ -192,69 +276,69 @@ public class RoomController {
   private void perfumeClicked() {
     System.out.println("Perfume clicked");
     counter++;
-    progressBar.setProgress(progressSize += 0.2);
+    progressBar.setProgress(progressSize += 0.125);
     System.out.println("counter: " + counter);
   }
 
-  @FXML
-  private void perfume1MouseEntered() {
-    perfume1.setImage(perfume1Image);
-  }
+  // @FXML
+  // private void perfume1MouseEntered() {
+  //   perfume1.setImage(perfume1Image);
+  // }
 
-  @FXML
-  private void perfume1MouseExited() {
-    perfume1.setImage(perfume1ChangedImage);
-  }
+  // @FXML
+  // private void perfume1MouseExited() {
+  //   perfume1.setImage(perfume1ChangedImage);
+  // }
 
-  @FXML
-  private void perfume3MouseEntered() {
-    perfume3.setImage(perfume3Image);
-  }
+  // @FXML
+  // private void perfume3MouseEntered() {
+  //   perfume3.setImage(perfume3Image);
+  // }
 
-  @FXML
-  private void perfume3MouseExited() {
-    perfume3.setImage(perfume3ChangedImage);
-  }
+  // @FXML
+  // private void perfume3MouseExited() {
+  //   perfume3.setImage(perfume3ChangedImage);
+  // }
 
-  @FXML
-  private void perfume4MouseEntered() {
-    perfume4.setImage(perfume4Image);
-  }
+  // @FXML
+  // private void perfume4MouseEntered() {
+  //   perfume4.setImage(perfume4Image);
+  // }
 
-  @FXML
-  private void perfume4MouseExited() {
-    perfume4.setImage(perfume4ChangedImage);
-  }
+  // @FXML
+  // private void perfume4MouseExited() {
+  //   perfume4.setImage(perfume4ChangedImage);
+  // }
 
-  @FXML
-  private void perfume5MouseEntered() {
-    perfume5.setImage(perfume5Image);
-  }
+  // @FXML
+  // private void perfume5MouseEntered() {
+  //   perfume5.setImage(perfume5Image);
+  // }
 
-  @FXML
-  private void perfume5MouseExited() {
-    perfume5.setImage(perfume5ChangedImage);
-  }
+  // @FXML
+  // private void perfume5MouseExited() {
+  //   perfume5.setImage(perfume5ChangedImage);
+  // }
 
-  @FXML
-  private void perfume6MouseEntered() {
-    perfume6.setImage(perfume6Image);
-  }
+  // @FXML
+  // private void perfume6MouseEntered() {
+  //   perfume6.setImage(perfume6Image);
+  // }
 
-  @FXML
-  private void perfume6MouseExited() {
-    perfume6.setImage(perfume6ChangedImage);
-  }
+  // @FXML
+  // private void perfume6MouseExited() {
+  //   perfume6.setImage(perfume6ChangedImage);
+  // }
 
-  @FXML
-  private void perfume7MouseEntered() {
-    perfume7.setImage(perfume7Image);
-  }
+  // @FXML
+  // private void perfume7MouseEntered() {
+  //   perfume7.setImage(perfume7Image);
+  // }
 
-  @FXML
-  private void perfume7MouseExited() {
-    perfume7.setImage(perfume7ChangedImage);
-  }
+  // @FXML
+  // private void perfume7MouseExited() {
+  //   perfume7.setImage(perfume7ChangedImage);
+  // }
 
   /**
    * Handles the click event on the window.

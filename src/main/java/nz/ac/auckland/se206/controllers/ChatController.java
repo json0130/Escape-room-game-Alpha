@@ -1,6 +1,7 @@
 package nz.ac.auckland.se206.controllers;
 
 import java.io.IOException;
+import javafx.application.Platform;
 import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -97,10 +98,25 @@ public class ChatController {
     inputText.clear();
     ChatMessage msg = new ChatMessage("user", message);
     appendChatMessage(msg);
-    ChatMessage lastMsg = runGpt(msg);
-    if (lastMsg.getRole().equals("assistant") && lastMsg.getContent().startsWith("Correct")) {
-      GameState.isRiddleResolved = true;
-    }
+
+    Task<Void> chatview =
+        new Task<Void>() {
+          @Override
+          protected Void call() throws Exception {
+            ChatMessage lastMSg = runGpt(msg);
+            Platform.runLater(
+                () -> {
+                  if (lastMSg.getRole().equals("assistant")
+                      && lastMSg.getContent().startsWith("Correct")) {
+                    GameState.isRiddleResolved = true;
+                  }
+                });
+
+            return null;
+          }
+        };
+    Thread chatviewThread = new Thread(chatview);
+    chatviewThread.start();
   }
 
   /**
